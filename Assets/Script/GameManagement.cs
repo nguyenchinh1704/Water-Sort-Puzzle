@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,20 @@ public class GameManagement : MonoBehaviour
     public GameObject level;
     public GameObject levelNext;
     public GameObject pnVictory;
-    public GameObject btnNextLevel;
+    public GameObject btnNextLevel, text;
 
 
+    public void ShowText()
+    {
+        text.SetActive(true);
+        StartCoroutine(OffText());
+    }
 
+    IEnumerator OffText()
+    {
+        yield return new WaitForSeconds(2f);
+        text.SetActive(false);
+    }
     public void ChangeAncol()
     {
         var newArrGive = tubeGive.GetAllAncolSameColor();
@@ -81,10 +92,28 @@ public class GameManagement : MonoBehaviour
                /* Tubes[i].ReadytoChangeGive();*/
                 tubeReceive = Tubes[i];
                 ChangeAncol();
+                StartEffect();
                 CheckFullTube();
                 break;
             }
            
+        }
+    }
+
+    public void StartEffect()
+    {
+        List<Tube> tubeFull = new List<Tube>();
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            var ArrAncolColor = Tubes[i].GetAllAncolSameColor();
+            if (ArrAncolColor.Count == 3)
+            {
+                Tubes[i].StartEffect();
+            }
+            else
+            {
+                Tubes[i].EndEffect();
+            }
         }
     }
     public void CheckFullTube()
@@ -97,13 +126,11 @@ public class GameManagement : MonoBehaviour
             if (ArrAncolColor.Count == 3 || ArrAncolNoColor.Count == 3)
             {
                 tubeFull.Add(Tubes[i]);
-                {
                     if(tubeFull.Count == Tubes.Count)
                     {
                         pnVictory.SetActive(true);
                         btnNextLevel.SetActive(true);
                     }
-                }
             }
         }
     }

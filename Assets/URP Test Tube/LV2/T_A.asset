@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae36fa48ce01ecd43b101de1643ad1f4, type: 3}
-  m_Name: TT2
+  m_Name: T_A
   m_EditorClassIdentifier: 
   datas:
-  - G
   - R
+  - G
+  - G

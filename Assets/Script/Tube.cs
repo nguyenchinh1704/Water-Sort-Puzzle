@@ -15,13 +15,24 @@ public class Tube : MonoBehaviour
     bool isChoose = false ;
     bool isChange = false ;
     public GameObject btnChoose, btnUnChoose, btnChange;
+    public GameObject particeSys;
+
 
 
     #region buttonChoose
     [SerializeField] UIElement showChoose;
     public TweenPlayer localTweenShow;
-    
 
+
+   
+    public void StartEffect()
+    {
+        particeSys.SetActive(true);
+    }
+    public void EndEffect()
+    {
+        particeSys.SetActive(false);
+    }
     
     public void Choose()
     {
