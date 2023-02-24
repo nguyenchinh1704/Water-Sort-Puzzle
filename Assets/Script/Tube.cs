@@ -25,6 +25,20 @@ public class Tube : MonoBehaviour
 
 
    
+    public void ResetDataTube()
+    {
+        int count = 0;
+        for (int i = 0; i < card.datas.Length; i++)
+        {
+            listAncols[i].SetColor(card.datas[i]);
+            count++;
+
+        }
+        for (int i = count; i < listAncols.Count; i++)
+        {
+            listAncols[i].RemoveColor();
+        }
+    }
     public void StartEffect()
     {
         particeSys.SetActive(true);

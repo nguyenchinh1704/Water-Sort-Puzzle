@@ -18,6 +18,20 @@ public class GameManagement : MonoBehaviour
     public GameObject btnNextLevel, text;
 
 
+    public void ResetDataAllTube()
+    {
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            Tubes[i].ResetDataTube();
+            Tubes[i].EndEffect();
+        }
+    }
+
+
+    public void TakeAStepBack()
+    {
+       
+    }
     public void ShowText()
     {
         text.SetActive(true);
