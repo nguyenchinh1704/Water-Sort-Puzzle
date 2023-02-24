@@ -10,11 +10,11 @@ public class ColorClone : MonoBehaviour
     public GameObject message, pnStart;
 
     public GameObject containerColor, btnReload, btnPlay;
-    public InputField colorNumber;
-    int tubeNum, colorNum;
+    public InputField sumColorInTube;
+    int tubeNum, colorInTube;
     public List<ColorClone> listColor;
     public Image color;
-    public ColorCard card;
+    public InputField difColorNum;
 
     private void Start()
     {
@@ -22,14 +22,16 @@ public class ColorClone : MonoBehaviour
     }
     public void GenColors()
     {
-        var a = colorNumber.text;
+        var a = sumColorInTube.text;
         var b = tubeNumber.text;
         tubeNum = int.Parse(b);
-        colorNum = int.Parse(a);
+        colorInTube = int.Parse(a);
+        var c = difColorNum.text;
+        int difColor = int.Parse(c);
         /*int randomColor = UnityEngine.Random.Range(0, colorNum);*/
-        if (colorNum > 1 && colorNum <= 5 && colorNum < tubeNum)
+        if (colorInTube > 1 && colorInTube <= 5 && colorInTube < tubeNum && difColor <= colorInTube && difColor > 1)
         {
-            for (int i = 0; i < colorNum; i++)
+            for (int i = 0; i < colorInTube; i++)
             {
                 Image colorClone = Instantiate(/*color[randomColor],*/color, transform);
                 colorClone.transform.parent = containerColor.transform;

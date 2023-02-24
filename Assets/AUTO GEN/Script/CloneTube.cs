@@ -13,10 +13,9 @@ public class CloneTube : MonoBehaviour
     public GameObject message, pnStart;
 
     public GameObject btnReload, btnPlay;
-    public InputField colorNumber;
-    public GameObject groupTube;
-    int tubeNum, colorNum;
-    public InputField sumColor;
+    /*public GameObject groupTube;*/
+    int tubeNum;
+    public InputField difColorNum;
 
    
     private void Start()
@@ -26,14 +25,12 @@ public class CloneTube : MonoBehaviour
     public void GenTubes()
     {
         var a = tubeNumber.text;
-        var b = colorNumber.text;
-        var c = sumColor.text;
-        int sum = int.Parse(c);
-        colorNum = int.Parse(b);
+        var c = difColorNum.text;
+        int difColor = int.Parse(c);
         tubeNum = int.Parse(a);
-        GridLayoutGroup groupTubes = groupTube.GetComponent<GridLayoutGroup>();
-        groupTubes.cellSize = new Vector2(150, colorNum * 120 + 50);    
-        if (tubeNum <=10  && tubeNum > 2 && tubeNum > colorNum )
+       /* GridLayoutGroup groupTubes = groupTube.GetComponent<GridLayoutGroup>();*/
+       /* groupTubes.cellSize = new Vector2(150, colorInTube * 120 + 50); */     
+        if (tubeNum <=10  && tubeNum > 2 && difColor < tubeNum && difColor >1)
         {
             for (int i = 1; i < tubeNum; i++)
             {
