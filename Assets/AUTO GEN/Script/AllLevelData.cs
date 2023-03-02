@@ -14,7 +14,7 @@ public class AllLevelData : ScriptableObject
 public class Level
 {
     public string name;
-    public List<TubeData> listTubeData;
+    public List<TubeModel> listTubeData;
     /// so tube, so color khac nhau
     
 }

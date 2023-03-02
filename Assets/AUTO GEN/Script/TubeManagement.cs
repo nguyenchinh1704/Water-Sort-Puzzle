@@ -11,7 +11,7 @@ public class TubeManagement : MonoBehaviour
 {
     public List<ColorImage> listImage;
     /*public int maxItem;*/
-    public TubeData card;
+    public TubeModel card;
     /*bool isChoose = false;
     bool isChange = false;
     public GameObject btnChoose, btnUnChoose, btnChange;
@@ -28,9 +28,9 @@ public class TubeManagement : MonoBehaviour
     public void ResetDataTube()
     {
         int count = 0;
-        for (int i = 0; i < card.datas.Length; i++)
+        for (int i = 0; i < card.Color.Length; i++)
         {
-            listImage[i].SetColor(card.datas[i]);
+            listImage[i].SetColor(card.Color[i]);
             count++;
 
         }
@@ -185,13 +185,13 @@ public class TubeManagement : MonoBehaviour
             }
         }
     }
-    public void SetColorTube(TubeData card)
+    public void SetColorTube(TubeModel card)
     {
         this.card = card;
         int count = 0;
-        for (int i = 0; i < card.datas.Length; i++)
+        for (int i = 0; i < card.Color.Length; i++)
         {
-            listImage[i].SetColor(card.datas[i]);
+            listImage[i].SetColor(card.Color[i]);
             count++;
 
         }
@@ -200,6 +200,115 @@ public class TubeManagement : MonoBehaviour
             listImage[i].RemoveColor();
         }
     }
+
+    //public void SetColorTube1(TubeData card1)
+    //{
+    //    this.card = card1;
+    //    int count = 0;
+    //    for (int i = 0; i < listImage.Count; i++)
+    //    {
+    //        listImage[i].SetColor(card1.datas[i]);
+    //        count++;
+
+    //    }
+
+    //}
+    //public void Randomcolor(TubeData card)
+    //{
+    //    this.card = card;
+    //    int a = 0;
+    //    for (int i = 0; i < listImage.Count; i++)
+    //    {
+    //        if(listImage[i].IsHasColor() == true)
+    //        {
+    //            a++;
+    //        }
+    //    }
+    //    if ( a < 4 )
+    //    {
+    //        for (int i = 0; i < card.datas.Length; i++)
+    //        {
+    //            var c = UnityEngine.Random.Range(0, listImage.Count);
+    //            if (listImage[c].IsHasColor() == false)
+    //            {
+    //                listImage[c].SetColor(card.datas[i]);
+                    
+    //            }
+    //        }
+           
+    //    }
+
+    //}
+    public int id;
+    public int[] Color;
+    public int maxColor;
+    /*public TubeModel(int id, int maxColor)
+    {
+        this.id = id;
+        this.maxColor = maxColor;
+        Color = new int[maxColor];
+    }*/
+    public void RandomColor(int colorNum)
+    {
+        Color = new int[maxColor];
+
+        for (int i = 0; i < Color.Length; i++)
+        {
+            Color[i] = UnityEngine.Random.Range(0, colorNum);
+        }
+    }
+
+    public InputField tubeNumber;
+    public InputField colorNumber;
+   /* public void Colorize(TubeData card)
+    {
+        var a = tubeNumber.text;
+        var b = colorNumber.text;
+        int tubeNum = int.Parse(a);
+        int colorNum = int.Parse(b);
+        TubeManagement listImage = new TubeManagement();
+        for (int i = 0; i < colorNum; i++)
+        {
+            if (listTube[i].IsHasFull() != true)
+            {
+                var c = UnityEngine.Random.Range(0, 3);
+                if (listImage.listImage[c].IsHasColor() == false)
+                {
+                    listImage.listImage[c].SetColor(card.datas[i]);
+                }
+            }
+        }
+    }*/
+    /* public void SetColorRandom1(TubeData card1)
+     {
+         this.card = card1;
+         int count = 0;
+         for (int i = 0; i < listImage.Count; i++)
+         {
+             var a = UnityEngine.Random.Range(0, card1.datas.Length);
+             listImage[i].SetColor(card1.datas[a]);
+             count++;
+         }
+         for (int i = count; i < listImage.Count; i++)
+         {
+             listImage[i].RemoveColor();
+         }
+     }*/
+    /*public void SetColorRandom(TubeData card2)
+    {
+        this.card = card2;
+        int count = 0;
+        for (int i = 0; i < card.datas.Length; i++) 
+        {
+            var a = UnityEngine.Random.Range(0, card2.datas.Length);
+            listImage[i].SetColor(card2.datas[a]);
+            count++;
+        }
+        for (int i = count; i < listImage.Count; i++)
+        {
+            listImage[i].RemoveColor();
+        }
+    }*/
     /*internal bool IsHasChoose()
     {
         return isChoose;
