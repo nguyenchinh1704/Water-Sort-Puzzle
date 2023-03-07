@@ -10,7 +10,6 @@ using UnityExtensions.Tween;
 public class Tube : MonoBehaviour
 {
     public List<Ancol> listAncols;
-    public int maxItem;
     public CardTestTube card;
     bool isChoose = false ;
     bool isChange = false ;

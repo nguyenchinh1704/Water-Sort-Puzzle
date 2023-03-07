@@ -14,12 +14,13 @@ public class AllLevelData : ScriptableObject
 public class Level
 {
     public string name;
-    public List<TubeModel> listTubeData;
+    public List<TubeData> listTubeData;
     /// so tube, so color khac nhau
     
 }
+
 [System.Serializable]
 public class TubeData
 {
-    public string[] datas;
+    public int[] Color;
 }

@@ -444,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 43467603}
 --- !u!114 &43467603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,7 +1239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 81309125}
 --- !u!1 &90037559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,21 +1503,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
+  listImage:
   - {fileID: 1730528115}
   - {fileID: 1701828006}
   - {fileID: 826126841}
-  maxItem: 3
-  card: {fileID: 11400000, guid: c6fe56a3251baa3418ef0fc9570b5b6b, type: 2}
+  card:
+    Color: 0100000000000000
   btnChoose: {fileID: 598979358}
   btnUnChoose: {fileID: 470060463}
   btnChange: {fileID: 1222201890}
-  particeSys: {fileID: 1642793377}
   showChoose: {fileID: 1496365018}
   localTweenShow: {fileID: 1496365017}
-  showChange: {fileID: 90048287}
-  localTweenShowChange: {fileID: 90048286}
-  localTweenShow1Change: {fileID: 1496365017}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!1 &107447954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 107447954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 107447956}
@@ -1924,7 +1924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 136898687}
 --- !u!1 &174091129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,21 +2165,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 981693203}
-  - {fileID: 386551722}
-  - {fileID: 1099791269}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 09822209c7bdfc244b3b0f92513bc473, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1930060458}
   btnUnChoose: {fileID: 1378908392}
   btnChange: {fileID: 394420929}
-  particeSys: {fileID: 741229217}
   showChoose: {fileID: 1039685298}
   localTweenShow: {fileID: 1039685293}
-  showChange: {fileID: 205002580}
-  localTweenShowChange: {fileID: 205002579}
-  localTweenShow1Change: {fileID: 1039685293}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &205002579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,7 +2375,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectChange
         m_Mode: 1
         m_Arguments:
@@ -2878,7 +2876,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 228862184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 228862186}
@@ -2917,7 +2915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.0599995, y: -6.87}
+  m_AnchoredPosition: {x: -3.0599976, y: -6.869995}
   m_SizeDelta: {x: 124.33, y: 277.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249317371
@@ -2989,7 +2987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 251321862}
 --- !u!114 &251321862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8067,7 +8064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 262451150}
 --- !u!114 &262451150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8399,21 +8395,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1504607974}
-  - {fileID: 762159860}
-  - {fileID: 2123780140}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 8ce745feee8e4cb43b32e3b4858ee913, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1724300751}
   btnUnChoose: {fileID: 1776125677}
   btnChange: {fileID: 2055325397}
-  particeSys: {fileID: 1073248866}
   showChoose: {fileID: 1547792854}
   localTweenShow: {fileID: 1547792853}
-  showChange: {fileID: 270165372}
-  localTweenShowChange: {fileID: 270165371}
-  localTweenShow1Change: {fileID: 1547792853}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &270165371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8543,12 +8538,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 282042414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f275111b29e2754ea157511d7cd2be2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e8bc77c829dd9244a6b03fae8301ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tubes:
-  - {fileID: 1087817542}
-  - {fileID: 2091220889}
+  - {fileID: 1087817546}
+  - {fileID: 2091220892}
   tubeGive: {fileID: 0}
   tubeReceive: {fileID: 0}
   level: {fileID: 282042414}
@@ -8764,7 +8759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 337804250}
 --- !u!114 &337804250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8854,7 +8848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 340621195}
 --- !u!114 &340621195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9121,7 +9114,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2091220889}
+      - m_Target: {fileID: 2091220892}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 1
@@ -14162,7 +14155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 386551720}
 --- !u!1 &394420929
 GameObject:
   m_ObjectHideFlags: 0
@@ -14613,21 +14605,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 752660611}
-  - {fileID: 262451149}
-  - {fileID: 778264414}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 64995b29df95d12478e0171731a23956, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1783477805}
   btnUnChoose: {fileID: 846615492}
   btnChange: {fileID: 36974063}
-  particeSys: {fileID: 1057914795}
   showChoose: {fileID: 741621425}
   localTweenShow: {fileID: 741621424}
-  showChange: {fileID: 412681670}
-  localTweenShowChange: {fileID: 412681669}
-  localTweenShow1Change: {fileID: 741621424}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &412681669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19673,7 +19664,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectTubeGive
         m_Mode: 1
         m_Arguments:
@@ -19811,7 +19802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 441754526}
 --- !u!1 &470060463
 GameObject:
   m_ObjectHideFlags: 0
@@ -19908,7 +19898,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectUnChoose
         m_Mode: 1
         m_Arguments:
@@ -19988,7 +19978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 472911075}
 --- !u!114 &472911075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20136,7 +20125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 479947623}
 --- !u!1 &483432843
 GameObject:
   m_ObjectHideFlags: 0
@@ -20226,7 +20214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 483432845}
 --- !u!1 &502667842
 GameObject:
   m_ObjectHideFlags: 0
@@ -20243,7 +20230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &502667843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20280,19 +20267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f275111b29e2754ea157511d7cd2be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tubes:
-  - {fileID: 614514698}
-  - {fileID: 958059239}
-  - {fileID: 957482895}
-  - {fileID: 270165370}
-  - {fileID: 694667116}
-  tubeGive: {fileID: 0}
-  tubeReceive: {fileID: 0}
-  level: {fileID: 502667842}
-  levelNext: {fileID: 1703948637}
-  pnVictory: {fileID: 284566035}
-  btnNextLevel: {fileID: 931578280}
-  text: {fileID: 1193354153}
 --- !u!1 &505057575
 GameObject:
   m_ObjectHideFlags: 0
@@ -20469,21 +20443,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 2100032054}
-  - {fileID: 1759835751}
-  - {fileID: 441754528}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 986a98b36622eb94583da1b520110634, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 922681097}
   btnUnChoose: {fileID: 342238677}
   btnChange: {fileID: 1535022903}
-  particeSys: {fileID: 542070152}
   showChoose: {fileID: 1678348399}
   localTweenShow: {fileID: 1678348394}
-  showChange: {fileID: 509389674}
-  localTweenShowChange: {fileID: 509389673}
-  localTweenShow1Change: {fileID: 1678348394}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &509389673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25895,7 +25868,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2091220889}
+      - m_Target: {fileID: 2091220892}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -25910,6 +25883,18 @@ MonoBehaviour:
       - m_Target: {fileID: 282042416}
         m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
         m_MethodName: OnSelectTubeGive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2091220892}
+        m_TargetAssemblyTypeName: Tube, Assembly-CSharp
+        m_MethodName: ReadytoChangeGive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26343,7 +26328,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectTubeGive
         m_Mode: 1
         m_Arguments:
@@ -26408,7 +26393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &610742518
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26445,18 +26430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f275111b29e2754ea157511d7cd2be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tubes:
-  - {fileID: 1719198671}
-  - {fileID: 1848453181}
-  - {fileID: 205002578}
-  - {fileID: 412681668}
-  tubeGive: {fileID: 0}
-  tubeReceive: {fileID: 0}
-  level: {fileID: 610742517}
-  levelNext: {fileID: 502667842}
-  pnVictory: {fileID: 284566035}
-  btnNextLevel: {fileID: 174091129}
-  text: {fileID: 1193354153}
 --- !u!1 &614514697
 GameObject:
   m_ObjectHideFlags: 0
@@ -26488,21 +26461,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 938323033}
-  - {fileID: 479947625}
-  - {fileID: 1145077725}
-  maxItem: 3
-  card: {fileID: 11400000, guid: bb490635fc627b14e8d2a005929b2abb, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 44353348}
   btnUnChoose: {fileID: 1492207371}
   btnChange: {fileID: 527878083}
-  particeSys: {fileID: 1789162054}
   showChoose: {fileID: 1477432754}
   localTweenShow: {fileID: 1477432749}
-  showChange: {fileID: 614514700}
-  localTweenShowChange: {fileID: 614514699}
-  localTweenShow1Change: {fileID: 1477432749}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &614514699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26799,7 +26771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 626483396}
 --- !u!114 &626483396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32158,21 +32129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1589136511}
-  - {fileID: 1508037017}
-  - {fileID: 2069948022}
-  maxItem: 3
-  card: {fileID: 11400000, guid: ad1864f92d40cf241812b6f815c822f9, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 973808016}
   btnUnChoose: {fileID: 1599771709}
   btnChange: {fileID: 222385025}
-  particeSys: {fileID: 385039898}
   showChoose: {fileID: 1439219947}
   localTweenShow: {fileID: 1439219946}
-  showChange: {fileID: 694667118}
-  localTweenShowChange: {fileID: 694667117}
-  localTweenShow1Change: {fileID: 1439219946}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &694667117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32341,7 +32311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 707980161}
 --- !u!1 &708728763
 GameObject:
   m_ObjectHideFlags: 0
@@ -32518,7 +32487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 716099213}
 --- !u!114 &716099213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37808,7 +37776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 752660612}
 --- !u!114 &752660612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37898,7 +37865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 762159861}
 --- !u!114 &762159861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38121,7 +38087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 778264415}
 --- !u!114 &778264415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38232,21 +38197,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1269873767}
-  - {fileID: 43467602}
-  - {fileID: 251321861}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 6c6f166401195a745aec3a4809c6d197, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1158462869}
   btnUnChoose: {fileID: 1517079448}
   btnChange: {fileID: 1147249124}
-  particeSys: {fileID: 1681264399}
   showChoose: {fileID: 2008850054}
   localTweenShow: {fileID: 2008850053}
-  showChange: {fileID: 795767954}
-  localTweenShowChange: {fileID: 795767953}
-  localTweenShow1Change: {fileID: 2008850053}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &795767953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43427,7 +43391,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 826126837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 826126839}
@@ -43459,7 +43423,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 844335653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 844335655}
@@ -43755,7 +43719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 846767881}
 --- !u!1 &854131666
 GameObject:
   m_ObjectHideFlags: 0
@@ -43824,7 +43787,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 872566249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 872566251}
@@ -43975,7 +43938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 894711875}
 --- !u!1 &897516281
 GameObject:
   m_ObjectHideFlags: 0
@@ -44609,7 +44571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 938323031}
 --- !u!1 &954306392
 GameObject:
   m_ObjectHideFlags: 0
@@ -44959,21 +44920,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1621524192}
-  - {fileID: 81309127}
-  - {fileID: 707980163}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 88d45b57905aa414bb26073af2ccf704, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 744651767}
   btnUnChoose: {fileID: 2145499721}
   btnChange: {fileID: 1041678077}
-  particeSys: {fileID: 1571617148}
   showChoose: {fileID: 54707455}
   localTweenShow: {fileID: 54707450}
-  showChange: {fileID: 957482897}
-  localTweenShowChange: {fileID: 957482896}
-  localTweenShow1Change: {fileID: 54707450}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &957482896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45105,21 +45065,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 2134578884}
-  - {fileID: 1077502199}
-  - {fileID: 846767883}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 79c4e535dfe8ae24dadda386309778c7, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 227858730}
   btnUnChoose: {fileID: 708728763}
   btnChange: {fileID: 562795905}
-  particeSys: {fileID: 2146782830}
   showChoose: {fileID: 1446793444}
   localTweenShow: {fileID: 1446793439}
-  showChange: {fileID: 958059241}
-  localTweenShowChange: {fileID: 958059240}
-  localTweenShow1Change: {fileID: 1446793439}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &958059240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45454,7 +45413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 981693201}
 --- !u!1 &981953224
 GameObject:
   m_ObjectHideFlags: 0
@@ -45518,7 +45476,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2091220889}
+      - m_Target: {fileID: 2091220892}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: UnChoose
         m_Mode: 1
@@ -46109,7 +46067,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029136574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1029136576}
@@ -46197,7 +46155,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1262268155}
-        m_TargetAssemblyTypeName: Tube, Assembly-CSharp
+        m_TargetAssemblyTypeName: TubeManagement, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
         m_Arguments:
@@ -46209,7 +46167,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectTubeGive
         m_Mode: 1
         m_Arguments:
@@ -46677,7 +46635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1056985058}
 --- !u!1 &1057914795
 GameObject:
   m_ObjectHideFlags: 0
@@ -56748,7 +56705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1077502197}
 --- !u!1 &1082417545
 GameObject:
   m_ObjectHideFlags: 0
@@ -56893,7 +56849,7 @@ GameObject:
   - component: {fileID: 1087817545}
   - component: {fileID: 1087817543}
   - component: {fileID: 1087817544}
-  - component: {fileID: 1087817542}
+  - component: {fileID: 1087817546}
   m_Layer: 5
   m_Name: Tube_A
   m_TagString: Untagged
@@ -56901,33 +56857,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1087817542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087817541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 228862188}
-  - {fileID: 1823041704}
-  - {fileID: 1437325662}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 1a42820557b7db74ab67678131792295, type: 2}
-  btnChoose: {fileID: 1280728258}
-  btnUnChoose: {fileID: 1620695889}
-  btnChange: {fileID: 1204971335}
-  particeSys: {fileID: 413943593}
-  showChoose: {fileID: 1278740121}
-  localTweenShow: {fileID: 1278740116}
-  showChange: {fileID: 1087817544}
-  localTweenShowChange: {fileID: 1087817543}
-  localTweenShow1Change: {fileID: 1278740116}
 --- !u!114 &1087817543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57028,6 +56957,32 @@ RectTransform:
   m_AnchoredPosition: {x: 483.99997, y: -607}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1087817546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087817541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23172dc644df8cf4c8476ad00a621085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listAncols:
+  - {fileID: 228862188}
+  - {fileID: 1823041704}
+  - {fileID: 1437325662}
+  card: {fileID: 11400000, guid: 1a42820557b7db74ab67678131792295, type: 2}
+  btnChoose: {fileID: 1280728258}
+  btnUnChoose: {fileID: 1620695889}
+  btnChange: {fileID: 1204971335}
+  particeSys: {fileID: 413943593}
+  showChoose: {fileID: 1278740121}
+  localTweenShow: {fileID: 1278740116}
+  showChange: {fileID: 2091220891}
+  localTweenShowChange: {fileID: 2091220890}
+  localTweenShow1Change: {fileID: 1953239343}
 --- !u!1 &1099791265
 GameObject:
   m_ObjectHideFlags: 0
@@ -57117,7 +57072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1099791267}
 --- !u!1 &1109517466
 GameObject:
   m_ObjectHideFlags: 0
@@ -57574,7 +57528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1145077723}
 --- !u!1 &1147249124
 GameObject:
   m_ObjectHideFlags: 0
@@ -62642,21 +62595,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 340621194}
-  - {fileID: 1578391238}
-  - {fileID: 716099212}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 0bf513ba1c8a1f24f842c852d015eda8, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1154134650}
   btnUnChoose: {fileID: 1004991215}
   btnChange: {fileID: 505057575}
-  particeSys: {fileID: 1892717512}
   showChoose: {fileID: 405835368}
   localTweenShow: {fileID: 405835367}
-  showChange: {fileID: 1152827778}
-  localTweenShowChange: {fileID: 1152827777}
-  localTweenShow1Change: {fileID: 405835367}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &1152827777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62764,7 +62716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154060566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1154060568}
@@ -63439,7 +63391,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1087817542}
+      - m_Target: {fileID: 1087817546}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 1
@@ -63677,7 +63629,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectChange
         m_Mode: 1
         m_Arguments:
@@ -64216,21 +64168,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
+  listImage:
   - {fileID: 1029136578}
   - {fileID: 107447958}
   - {fileID: 1919421114}
-  maxItem: 3
-  card: {fileID: 11400000, guid: a29c22cbca13e75429d17595f8ff6e51, type: 2}
+  card:
+    Color: 000000000000000000000000
   btnChoose: {fileID: 1038629709}
   btnUnChoose: {fileID: 1512101033}
   btnChange: {fileID: 1497436089}
-  particeSys: {fileID: 2004606119}
   showChoose: {fileID: 46784420}
   localTweenShow: {fileID: 46784421}
-  showChange: {fileID: 1262268153}
-  localTweenShowChange: {fileID: 1262268152}
-  localTweenShow1Change: {fileID: 46784421}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!1 &1266062746
 GameObject:
   m_ObjectHideFlags: 0
@@ -64407,7 +64361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1269873768}
 --- !u!114 &1269873768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64477,7 +64430,6 @@ GameObject:
   - component: {fileID: 1278740117}
   - component: {fileID: 1278740120}
   - component: {fileID: 1278740119}
-  - component: {fileID: 1278740118}
   - component: {fileID: 1278740116}
   - component: {fileID: 1278740121}
   m_Layer: 5
@@ -64576,22 +64528,6 @@ RectTransform:
   m_AnchoredPosition: {x: -9.303173, y: 0}
   m_SizeDelta: {x: -71.19472, y: -14.8247}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1278740118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278740115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae5982144298134fb5445ae62eb1de5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: a29c22cbca13e75429d17595f8ff6e51, type: 2}
-  img1: {fileID: 228862186}
-  img2: {fileID: 1823041702}
-  img3: {fileID: 1437325660}
 --- !u!114 &1278740119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64734,7 +64670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1087817542}
+      - m_Target: {fileID: 1087817546}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -64749,6 +64685,18 @@ MonoBehaviour:
       - m_Target: {fileID: 282042416}
         m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
         m_MethodName: OnSelectTubeGive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Tube, Assembly-CSharp
+        m_MethodName: ReadytoChangeGive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65243,7 +65191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1336815863}
 --- !u!1 &1338973860
 GameObject:
   m_ObjectHideFlags: 0
@@ -75770,7 +75717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.06, y: 1.4399414}
+  m_AnchoredPosition: {x: -3.0599976, y: 1.4399414}
   m_SizeDelta: {x: 124.33, y: 260.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433656689
@@ -75897,7 +75844,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437325658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1437325660}
@@ -76545,7 +76492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1478250853}
 --- !u!1 &1492207371
 GameObject:
   m_ObjectHideFlags: 0
@@ -76780,7 +76726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1494103722}
 --- !u!1 &1495553720
 GameObject:
   m_ObjectHideFlags: 0
@@ -77090,7 +77035,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1262268155}
-        m_TargetAssemblyTypeName: Tube, Assembly-CSharp
+        m_TargetAssemblyTypeName: TubeManagement, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 1
         m_Arguments:
@@ -77102,7 +77047,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectChange
         m_Mode: 1
         m_Arguments:
@@ -77182,7 +77127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1504607975}
 --- !u!114 &1504607975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77272,7 +77216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1508037018}
 --- !u!114 &1508037018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77415,7 +77358,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1262268155}
-        m_TargetAssemblyTypeName: Tube, Assembly-CSharp
+        m_TargetAssemblyTypeName: TubeManagement, Assembly-CSharp
         m_MethodName: UnChoose
         m_Mode: 1
         m_Arguments:
@@ -77427,7 +77370,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectUnChoose
         m_Mode: 1
         m_Arguments:
@@ -77814,7 +77757,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522010755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1522010758}
@@ -78370,7 +78313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1552844106}
 --- !u!114 &1552844106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83629,7 +83571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1578391239}
 --- !u!114 &1578391239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83719,7 +83660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1589136512}
 --- !u!114 &1589136512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84082,7 +84022,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1087817542}
+      - m_Target: {fileID: 1087817546}
         m_TargetAssemblyTypeName: Tube, Assembly-CSharp
         m_MethodName: UnChoose
         m_Mode: 1
@@ -84233,7 +84173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1621524190}
 --- !u!1 &1622927262
 GameObject:
   m_ObjectHideFlags: 0
@@ -84262,7 +84201,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622927262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1622927264}
@@ -89456,7 +89395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1650527576}
 --- !u!1 &1662881836
 GameObject:
   m_ObjectHideFlags: 0
@@ -89565,7 +89503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669844393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1669844395}
@@ -89658,7 +89596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1670746298}
 --- !u!114 &1670746298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89733,7 +89670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1678063206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89767,7 +89704,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678063205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f275111b29e2754ea157511d7cd2be2, type: 3}
+  m_Script: {fileID: 11500000, guid: 64674dc9582bea841a0e9bcb0986b3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tubes:
@@ -89776,11 +89713,7 @@ MonoBehaviour:
   - {fileID: 2061372179}
   tubeGive: {fileID: 0}
   tubeReceive: {fileID: 0}
-  level: {fileID: 1678063205}
-  levelNext: {fileID: 610742517}
-  pnVictory: {fileID: 284566035}
-  btnNextLevel: {fileID: 1252838518}
-  text: {fileID: 1193354153}
+  giveData: {fileID: 0}
 --- !u!1 &1678348393
 GameObject:
   m_ObjectHideFlags: 0
@@ -94922,7 +94855,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701828002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1701828004}
@@ -94942,7 +94875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1703948638
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94976,23 +94909,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703948637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f275111b29e2754ea157511d7cd2be2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e8bc77c829dd9244a6b03fae8301ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tubes:
-  - {fileID: 1924152982}
-  - {fileID: 509389672}
-  - {fileID: 1770919593}
-  - {fileID: 1874725973}
-  - {fileID: 1152827776}
-  - {fileID: 795767952}
+  Tubes: []
   tubeGive: {fileID: 0}
   tubeReceive: {fileID: 0}
-  level: {fileID: 1703948637}
-  levelNext: {fileID: 282042414}
-  pnVictory: {fileID: 284566035}
-  btnNextLevel: {fileID: 1562122477}
-  text: {fileID: 1193354153}
+  level: {fileID: 0}
+  levelNext: {fileID: 0}
+  pnVictory: {fileID: 0}
+  btnNextLevel: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &1704979132
 GameObject:
   m_ObjectHideFlags: 0
@@ -95089,7 +95016,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1678063207}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
+        m_TargetAssemblyTypeName: GamePlay, Assembly-CSharp
         m_MethodName: OnSelectUnChoose
         m_Mode: 1
         m_Arguments:
@@ -95284,21 +95211,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1056985060}
-  - {fileID: 1478250855}
-  - {fileID: 1336815865}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 23c32f9100f82d34bada7e9a4050efad, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 18068292}
   btnUnChoose: {fileID: 1020367985}
   btnChange: {fileID: 117197444}
-  particeSys: {fileID: 813859919}
   showChoose: {fileID: 954989818}
   localTweenShow: {fileID: 954989813}
-  showChange: {fileID: 1719198673}
-  localTweenShowChange: {fileID: 1719198672}
-  localTweenShow1Change: {fileID: 954989813}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &1719198672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95630,7 +95556,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730528111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1730528113}
@@ -96022,7 +95948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1759835749}
 --- !u!1 &1770919592
 GameObject:
   m_ObjectHideFlags: 0
@@ -96054,21 +95979,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1650527578}
-  - {fileID: 894711877}
-  - {fileID: 483432847}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 72064d6aa898bc44882ebf75dda42875, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 616965022}
   btnUnChoose: {fileID: 1311214769}
   btnChange: {fileID: 1520775572}
-  particeSys: {fileID: 258509528}
   showChoose: {fileID: 1109517472}
   localTweenShow: {fileID: 1109517467}
-  showChange: {fileID: 1770919595}
-  localTweenShowChange: {fileID: 1770919594}
-  localTweenShow1Change: {fileID: 1109517467}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &1770919594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101415,7 +101339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823041700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1823041702}
@@ -101635,21 +101559,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 2033258517}
-  - {fileID: 1494103724}
-  - {fileID: 136898689}
-  maxItem: 3
-  card: {fileID: 11400000, guid: ac57b7ec6ee193641a5537e9f0490e7b, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 587767406}
   btnUnChoose: {fileID: 1380498862}
   btnChange: {fileID: 2061205291}
-  particeSys: {fileID: 2046685044}
   showChoose: {fileID: 897516287}
   localTweenShow: {fileID: 897516282}
-  showChange: {fileID: 1848453183}
-  localTweenShowChange: {fileID: 1848453182}
-  localTweenShow1Change: {fileID: 897516282}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &1848453182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102148,21 +102071,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1670746297}
-  - {fileID: 472911074}
-  - {fileID: 337804249}
-  maxItem: 3
-  card: {fileID: 11400000, guid: b2fbd7564f4b1c641897662c471c9641, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 266399554}
   btnUnChoose: {fileID: 798263795}
   btnChange: {fileID: 1266062746}
-  particeSys: {fileID: 652207168}
   showChoose: {fileID: 1757763115}
   localTweenShow: {fileID: 1757763114}
-  showChange: {fileID: 1874725975}
-  localTweenShowChange: {fileID: 1874725974}
-  localTweenShow1Change: {fileID: 1757763114}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &1874725974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107198,7 +107120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1919421110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d6f63a7f7c43a40a8371a88414a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1919421112}
@@ -107333,21 +107255,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1522010757}
-  - {fileID: 626483395}
-  - {fileID: 1552844105}
-  maxItem: 3
-  card: {fileID: 11400000, guid: f21254021f49ba94bba63243f185259d, type: 2}
+  listImage: []
+  card:
+    Color: 
   btnChoose: {fileID: 1226180313}
   btnUnChoose: {fileID: 1575247494}
   btnChange: {fileID: 1114347467}
-  particeSys: {fileID: 1148394448}
   showChoose: {fileID: 1828653734}
   localTweenShow: {fileID: 1828653735}
-  showChange: {fileID: 1924152980}
-  localTweenShowChange: {fileID: 1924152981}
-  localTweenShow1Change: {fileID: 1828653735}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!1 &1930060458
 GameObject:
   m_ObjectHideFlags: 0
@@ -107585,7 +107506,6 @@ GameObject:
   - component: {fileID: 1953239342}
   - component: {fileID: 1953239347}
   - component: {fileID: 1953239346}
-  - component: {fileID: 1953239345}
   - component: {fileID: 1953239343}
   - component: {fileID: 1953239344}
   m_Layer: 5
@@ -107705,22 +107625,6 @@ MonoBehaviour:
       m_Calls: []
   RegisterOnBack: 0
   indexLayer: 0
---- !u!114 &1953239345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953239341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae5982144298134fb5445ae62eb1de5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: b2d77454decf717429201fdd678a14e1, type: 2}
-  img1: {fileID: 1975313530}
-  img2: {fileID: 844335655}
-  img3: {fileID: 1154060568}
 --- !u!114 &1953239346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107787,7 +107691,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1975313528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
+  m_Script: {fileID: 11500000, guid: b34d9b3167585a24dae728a8206636c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1975313530}
@@ -113200,7 +113104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 2033258515}
 --- !u!1 &2046685044
 GameObject:
   m_ObjectHideFlags: 0
@@ -118546,21 +118449,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listAncols:
+  listImage:
   - {fileID: 872566250}
   - {fileID: 1669844394}
   - {fileID: 1622927263}
-  maxItem: 3
-  card: {fileID: 11400000, guid: b2d77454decf717429201fdd678a14e1, type: 2}
+  card:
+    Color: 0100000001000000
   btnChoose: {fileID: 416408403}
   btnUnChoose: {fileID: 1704979132}
   btnChange: {fileID: 218382189}
-  particeSys: {fileID: 1400872699}
   showChoose: {fileID: 669610180}
   localTweenShow: {fileID: 669610179}
-  showChange: {fileID: 2061372181}
-  localTweenShowChange: {fileID: 2061372182}
-  localTweenShow1Change: {fileID: 669610179}
+  timeRotate: 0.6
+  leftRotationPoint: {fileID: 0}
+  rightRotationPoint: {fileID: 0}
+  chosenRotationPoint: {fileID: 0}
+  directionMutiplier: 1
+  bottleControllerRef: {fileID: 0}
 --- !u!114 &2061372181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118671,7 +118576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 2069948023}
 --- !u!114 &2069948023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118914,7 +118818,7 @@ GameObject:
   - component: {fileID: 2091220888}
   - component: {fileID: 2091220890}
   - component: {fileID: 2091220891}
-  - component: {fileID: 2091220889}
+  - component: {fileID: 2091220892}
   m_Layer: 5
   m_Name: Tube_B
   m_TagString: Untagged
@@ -118943,33 +118847,6 @@ RectTransform:
   m_AnchoredPosition: {x: 845, y: -614.69995}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2091220889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091220887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d77b4f165f93c43a4c01ae03649f88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listAncols:
-  - {fileID: 1975313529}
-  - {fileID: 844335654}
-  - {fileID: 1154060567}
-  maxItem: 3
-  card: {fileID: 11400000, guid: 9e54ea5ae85fbaa4e901b0db595679dd, type: 2}
-  btnChoose: {fileID: 554441277}
-  btnUnChoose: {fileID: 981953224}
-  btnChange: {fileID: 342517831}
-  particeSys: {fileID: 1338973860}
-  showChoose: {fileID: 1953239344}
-  localTweenShow: {fileID: 1953239343}
-  showChange: {fileID: 2091220891}
-  localTweenShowChange: {fileID: 2091220890}
-  localTweenShow1Change: {fileID: 1953239343}
 --- !u!114 &2091220890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119049,6 +118926,32 @@ MonoBehaviour:
       m_Calls: []
   RegisterOnBack: 0
   indexLayer: 0
+--- !u!114 &2091220892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091220887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23172dc644df8cf4c8476ad00a621085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listAncols:
+  - {fileID: 1975313529}
+  - {fileID: 844335654}
+  - {fileID: 1154060567}
+  card: {fileID: 11400000, guid: 9e54ea5ae85fbaa4e901b0db595679dd, type: 2}
+  btnChoose: {fileID: 554441277}
+  btnUnChoose: {fileID: 981953224}
+  btnChange: {fileID: 342517831}
+  particeSys: {fileID: 1338973860}
+  showChoose: {fileID: 1953239344}
+  localTweenShow: {fileID: 1953239343}
+  showChange: {fileID: 1087817544}
+  localTweenShowChange: {fileID: 1087817543}
+  localTweenShow1Change: {fileID: 1278740116}
 --- !u!1 &2100032050
 GameObject:
   m_ObjectHideFlags: 0
@@ -119138,7 +119041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 2100032052}
 --- !u!1 &2115791212
 GameObject:
   m_ObjectHideFlags: 0
@@ -119303,7 +119205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 2123780141}
 --- !u!114 &2123780141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119451,7 +119352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b27e949a9181c498d8cbe2f9a3af85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 2134578882}
 --- !u!1 &2145499721
 GameObject:
   m_ObjectHideFlags: 0

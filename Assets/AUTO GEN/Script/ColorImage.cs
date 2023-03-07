@@ -8,17 +8,18 @@ public class ColorImage : MonoBehaviour
 {
     public Image img;
     bool hasColor;
-    string data;
+    /*string data;*/
     int data_int;
-    //public void SetColor(Color color)
-    //{
-    //    img.color = color;
-    //    hasColor = true;       
-    //    img.gameObject.SetActive(true);
+    int value = 0;
+    /*public void SetColor(Color color)
+    {
+        img.color = color;
+        hasColor = true;
+        img.gameObject.SetActive(true);
 
-    //}
+    }*/
 
-    public static Color GetColorByID(string colorID)
+    /*public static Color GetColorByID(string colorID)
     {
         switch (colorID)
         {
@@ -32,48 +33,56 @@ public class ColorImage : MonoBehaviour
             case "K": return Color.black;
             default: return Color.clear;
         }
-    }
-    public void SetColor(string color)
+    }*/
+    /*public void SetColor(string color)
     {
         img.color = GetColorByID(color);
         data = color;
         hasColor = true;
         img.gameObject.SetActive(true);
 
-    }
+    }*/
+    public const int NO_COLOR = 0;
     public static Color GetColorByID_Int(int colorID)
     {
         switch (colorID)
         {
-            case 0: return Color.red;
             case 1: return Color.green;
             case 2: return Color.blue;
             case 3: return Color.yellow;
             case 4: return Color.gray;
-            case 5: return Color.white;
+            case 5: return Color.cyan;
             case 6: return Color.magenta;
             case 7: return Color.black;
-            default: return Color.clear;
+            case 8: return Color.red;
+            default: return Color.white;
         }
     }
     public void SetColor(int color)
     {
-        img.color = GetColorByID_Int(color);
-        data_int = color;
-        hasColor = true;
-        img.gameObject.SetActive(true);
+        
+            img.color = GetColorByID_Int(color);
+            data_int = color;
+            hasColor = true;
+            img.gameObject.SetActive(true);
+        
 
     }
     public void RemoveColor()
     {
-        hasColor = false;
-        img.gameObject.SetActive(false);
+        
+            hasColor = false;
+            img.gameObject.SetActive(false);
+        
 
     }
 
-    public void Check()
+    public void Check(int valueData)
     {
-
+        if (valueData == value)
+        {
+            img.gameObject.SetActive(false);
+        }
     }
 
     internal bool IsHasColor()
@@ -83,11 +92,11 @@ public class ColorImage : MonoBehaviour
 
     internal bool IsSameColor(ColorImage image)
     {
-        return data == image.data;
+        return data_int == image.data_int;
     }
-    public string ReturnColor()
+    public int ReturnColor()
     {
-        return data;
+        return data_int;
     }
     // lay ra nung dung dich cung mau ten cung
 
