@@ -10,7 +10,6 @@ public class ColorImage : MonoBehaviour
     bool hasColor;
     /*string data;*/
     int data_int;
-    int value = 0;
     /*public void SetColor(Color color)
     {
         img.color = color;
@@ -60,26 +59,30 @@ public class ColorImage : MonoBehaviour
     }
     public void SetColor(int color)
     {
-        
-            img.color = GetColorByID_Int(color);
-            data_int = color;
+
+        img.color = GetColorByID_Int(color);
+        data_int = color;
+        if (color == 0)
+        {
+            RemoveColor();
+        }
+        else
+        {
             hasColor = true;
             img.gameObject.SetActive(true);
-        
+        }
+
 
     }
     public void RemoveColor()
-    {
-        
+    {     
             hasColor = false;
             img.gameObject.SetActive(false);
-        
-
     }
 
     public void Check(int valueData)
     {
-        if (valueData == value)
+        if (valueData == 0)
         {
             img.gameObject.SetActive(false);
         }

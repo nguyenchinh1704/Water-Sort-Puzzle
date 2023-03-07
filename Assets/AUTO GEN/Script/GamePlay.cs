@@ -15,7 +15,7 @@ public class GamePlay : MonoBehaviour
     }
     public void ResetDataAllTube()
     {
-        
+
         for (int i = 0; i < Tubes.Count; i++)
         {
             Tubes[i].ResetDataTube();
@@ -25,28 +25,53 @@ public class GamePlay : MonoBehaviour
 
     public void ChangeAncol()
     {
-       
+
         var newArrGive = tubeGive.GetAllAncolSameColor();
         var newArrReceive = tubeReceive.GetAllAncolNoColor();
-        if (newArrGive.Count <= newArrReceive.Count)
+        var newCheck = tubeReceive.ColoringCondition();
+        if (newCheck.Count > 0)
         {
-            tubeReceive.ReceiveAllAncol(newArrGive);
-            /*tubeGive.AnimationEnd();*/
+            if (newArrGive[0].IsSameColor(newCheck[0]))
+            {
+                tubeReceive.ReceiveAllAncol(newArrGive);
+                tubeGive.MoveTubeBack();
+                CheckEffect();
 
+            }
+            else
+            {
+                OnSelectUnChoose();
+                tubeGive.MoveTubeBack();
+            }
         }
         else
         {
-            OnSelectUnChoose();
+            tubeReceive.ReceiveAllAncol(newArrGive);
+            tubeGive.MoveTubeBack();
+            CheckEffect();
         }
+
         for (int i = 0; i < Tubes.Count; i++)
         {
             Tubes[i].ResetTube();
-            Tubes[i].close();
+        }
+    }
+    public void CheckEffect()
+    {
+        var a = tubeGive.transform.position.x;
+        var b = tubeReceive.transform.position.x;
+        if (a < b)
+        {
+            tubeGive.EffectRotateRight();
+        }
+        else
+        {
+            tubeGive.EffectRotateLeft();
         }
     }
     public void OnSelectTubeGive()
     {
-        
+
         List<TubeManagement> TubeGive = new List<TubeManagement>();
         for (int i = 0; i < Tubes.Count; i++)
         {
@@ -74,7 +99,7 @@ public class GamePlay : MonoBehaviour
 
     public void OnSelectUnChoose()
     {
-        
+
         for (int i = 0; i < Tubes.Count; i++)
         {
             Tubes[i].ResetTube();
@@ -83,7 +108,7 @@ public class GamePlay : MonoBehaviour
 
     public void OnSelectChange()
     {
-       
+
 
         for (int i = 0; i < Tubes.Count; i++)
         {
@@ -92,22 +117,34 @@ public class GamePlay : MonoBehaviour
                 /* Tubes[i].ReadytoChangeGive();*/
                 tubeReceive = Tubes[i];
                 ChangeAncol();
-                /*StartEffect();*/
+                CheckOneTube();
                 CheckFullTube();
                 break;
             }
 
         }
     }
+    public void CheckOneTube()
+    {
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            var ArrAncolColor = Tubes[i].GetAllAncolSameColor();
+            if (ArrAncolColor.Count == 4 )
+            {
+                Tubes[i].Particice();
+            }
+        }
+    }
+
     public void CheckFullTube()
     {
-       
+
         List<TubeManagement> tubeFull = new List<TubeManagement>();
         for (int i = 0; i < Tubes.Count; i++)
         {
             var ArrAncolColor = Tubes[i].GetAllAncolSameColor();
             var ArrAncolNoColor = Tubes[i].GetAllAncolNoColor();
-            if (ArrAncolColor.Count == 3 || ArrAncolNoColor.Count == 3)
+            if (ArrAncolColor.Count == 4 || ArrAncolNoColor.Count == 4)
             {
                 tubeFull.Add(Tubes[i]);
                 if (tubeFull.Count == Tubes.Count)

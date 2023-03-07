@@ -10,21 +10,20 @@ using UnityExtensions.Tween;
 public class TubeManagement : MonoBehaviour
 {
     public List<ColorImage> listImage;
-    /*public int maxItem;*/
     public TubeData card;
     bool isChoose = false;
     bool isChange = false;
     public GameObject btnChoose, btnUnChoose, btnChange;
-    /* public GameObject particeSys;*/
+    public GameObject particeSys;
 
 
 
     #region buttonChoose
-    [SerializeField] UIElement showChoose;
-    public TweenPlayer localTweenShow;
 
-
-
+    public void Particice()
+    {
+        particeSys.SetActive(true);
+    }
     public void ResetDataTube()
     {
         int count = 0;
@@ -39,32 +38,18 @@ public class TubeManagement : MonoBehaviour
             listImage[i].RemoveColor();
         }
     }
-   /* public void StartEffect()
-    {
-        particeSys.SetActive(true);
-    }
-    public void EndEffect()
-    {
-        particeSys.SetActive(false);
-    }*/
     public void Choose()
-    {
-        showChoose.show();
+    {      
         btnChoose.SetActive(false);
         isChoose = true;
-        /*StartCoroutine(RotateTube());*/
+        MoveTube();
     }
     public void UnChoose()
     {
-        close();
         btnChoose.SetActive(true);
         btnUnChoose.SetActive(false);
         isChoose = false;
-    }
-    public void close()
-    {
-        localTweenShow.Stop();
-        localTweenShow.normalizedTime = 0;
+        MoveTubeBack();
     }
 
 
@@ -72,35 +57,12 @@ public class TubeManagement : MonoBehaviour
 
     #region ButtonChange
 
-    /* public UIElement showChange;
-     public TweenPlayer localTweenShowChange;
-     public TweenPlayer localTweenShow1Change;*/
-    /*public void AnimationEnd()
-    {
-        showChange.show();
-        StartCoroutine(AutoOff());
-    }*/
+    
     public void Change()
     {
         btnChange.SetActive(false);
         isChange = true;
     }
-    /*IEnumerator AutoOff()
-    {
-        yield return new WaitForSeconds(1f);
-        closeChange();
-        close1();
-    }
-    public void closeChange()
-    {
-        localTweenShowChange.Stop();
-        localTweenShowChange.normalizedTime = 0;
-    }
-    public void close1()
-    {
-        localTweenShow1Change.Stop();
-        localTweenShow1Change.normalizedTime = 0;
-    }*/
     #endregion
 
 
@@ -155,6 +117,20 @@ public class TubeManagement : MonoBehaviour
         }
         return nocolor;
     }
+    public List<ColorImage> ColoringCondition()
+    {
+        List<ColorImage> listCheck = new List<ColorImage>();
+        int i = listImage.Count - 1;
+        for (; i >= 0; i--)
+        {
+            if (listImage[i].IsHasColor() == true)
+            {
+                listCheck.Add(listImage[i]);
+                break;
+            }
+        }
+        return listCheck;
+    }
 
     public void ReceiveAllAncol(List<ColorImage> listImage)
     {
@@ -180,14 +156,14 @@ public class TubeManagement : MonoBehaviour
     public void SetColorTube(TubeData card)
     {
         this.card = card;
-        
+
         for (int i = 0; i < card.Color.Length; i++)
         {
             listImage[i].SetColor(card.Color[i]);
 
             listImage[i].Check(card.Color[i]);
         }
-        
+
     }
 
 
@@ -225,62 +201,34 @@ public class TubeManagement : MonoBehaviour
     }
 
     public float timeRotate = 0.6f;
-    public Transform leftRotationPoint;
-    public Transform rightRotationPoint;
-    public Transform chosenRotationPoint;
     public float directionMutiplier = 1.0f;
-    public TubeManagement bottleControllerRef;
-    Vector3 originalPosition, startPosition, endPosition;
 
-    private void Start()
+
+    public void MoveTube()
     {
-        originalPosition = transform.position;
+        transform.position = new Vector3(transform.position.x, transform.position.y + 6, transform.position.z);
     }
 
-    IEnumerator MoveTube()
+    public void MoveTubeBack()
     {
-        startPosition = transform.position;
-        if(chosenRotationPoint = leftRotationPoint)
-        {
-            endPosition = bottleControllerRef.rightRotationPoint.position;
-        }
-        else
-        {
-            endPosition = bottleControllerRef.leftRotationPoint.position;
-        }
 
-        float t = 0;
-        while(t<= 1)
-        {
-            transform.position = Vector3.Lerp(startPosition, endPosition, t);
-            t += Time.deltaTime * 2;
-
-            yield return new WaitForEndOfFrame();
-        }
-        /*StartCoroutine(RotateTube()); */
+        transform.position = new Vector3(transform.position.x, transform.position.y -6 , transform.position.z);
     }
 
-    IEnumerator MoveTubeBack()
+    public void EffectRotateLeft()
     {
-        startPosition = transform.position;
-        endPosition = originalPosition;
-
-        float t = 0;
-        while (t <= 1)
-        {
-            transform.position = Vector3.Lerp(startPosition, endPosition, t);
-            t += Time.deltaTime * 2;
-
-            yield return new WaitForEndOfFrame();
-        }      
+        StartCoroutine(RotateTubeLeft());
     }
-
-    IEnumerator RotateTube()
+    public void EffectRotateRight()
+    {
+        StartCoroutine(RotateTubeRight());
+    }
+    IEnumerator RotateTubeLeft()
     {
         float t = 0;
         float lerpValue, angleValue;
         float lastAnglevalue = 0;
-        while(t< timeRotate)
+        while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
             angleValue = Mathf.Lerp(0.0f, 60.0f, lerpValue);
@@ -291,11 +239,11 @@ public class TubeManagement : MonoBehaviour
             lastAnglevalue = angleValue;
             yield return new WaitForEndOfFrame();
         }
-        angleValue =  60.0f;
+        angleValue = 60.0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
-        StartCoroutine(RotateTubeBack());
+        StartCoroutine(RotateTubeLeftBack());
     }
-    IEnumerator RotateTubeBack()
+    IEnumerator RotateTubeLeftBack()
     {
         float t = 0;
         float lerpValue, angleValue;
@@ -303,7 +251,7 @@ public class TubeManagement : MonoBehaviour
         while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
-            angleValue = Mathf.Lerp(directionMutiplier*60.0f, 0.0f, lerpValue);
+            angleValue = Mathf.Lerp(directionMutiplier * 60.0f, 0.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
             /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
@@ -317,16 +265,46 @@ public class TubeManagement : MonoBehaviour
 
         /*StartCoroutine(MoveTubeBack());*/
     }
-    private void ChoseRotationPointAndDriection()
+    IEnumerator RotateTubeRight()
     {
-        if(transform.position.x > bottleControllerRef.transform.position.x)
+        float t = 0;
+        float lerpValue, angleValue;
+        float lastAnglevalue = 0;
+        while (t < timeRotate)
         {
-            chosenRotationPoint = rightRotationPoint;
-            directionMutiplier = -1.0f;
-        } else
-        {
-            chosenRotationPoint = leftRotationPoint;
-            directionMutiplier = 1.0f;
+            lerpValue = t / timeRotate;
+            angleValue = Mathf.Lerp(0.0f, -60.0f, lerpValue);
+
+            transform.eulerAngles = new Vector3(0, 0, angleValue);
+            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
+            t += Time.deltaTime;
+            lastAnglevalue = angleValue;
+            yield return new WaitForEndOfFrame();
         }
+        angleValue = -60.0f;
+        transform.eulerAngles = new Vector3(0, 0, angleValue);
+        StartCoroutine(RotateTubeRightBack());
+    }
+    IEnumerator RotateTubeRightBack()
+    {
+        float t = 0;
+        float lerpValue, angleValue;
+        float lastAnglevalue = directionMutiplier;
+        while (t < timeRotate)
+        {
+            lerpValue = t / timeRotate;
+            angleValue = Mathf.Lerp(directionMutiplier * -60.0f, 0.0f, lerpValue);
+
+            transform.eulerAngles = new Vector3(0, 0, angleValue);
+            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
+
+            lastAnglevalue = angleValue;
+            t += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        angleValue = 0f;
+        transform.eulerAngles = new Vector3(0, 0, angleValue);
+
+        /*StartCoroutine(MoveTubeBack());*/
     }
 }

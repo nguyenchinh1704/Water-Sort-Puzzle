@@ -18,7 +18,7 @@ public class ControllerGame : MonoBehaviour
    
     public List<TubeManagement> listTube = new List<TubeManagement>();
 
-    string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };
+    string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };   
 
 
     /*public void GenTubes()
@@ -283,113 +283,7 @@ public class ControllerGame : MonoBehaviour
         SceneManager.LoadScene("Auto Gen");
     }
 
-    /*public TubeManagement tubeGive;
-    public TubeManagement tubeReceive;
-
-    public void ResetDataAllTube()
-    {
-
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            listTube[i].ResetDataTube();
-            *//*Tubes[i].EndEffect();*//*
-        }
-    }
-
-    public void ChangeAncol()
-    {
-        var newArrGive = tubeGive.GetAllAncolSameColor();
-        var newArrReceive = tubeReceive.GetAllAncolNoColor();
-        if (newArrGive.Count <= newArrReceive.Count)
-        {
-            tubeReceive.ReceiveAllAncol(newArrGive);
-            *//*tubeGive.AnimationEnd();*//*
-
-        }
-        else
-        {
-            OnSelectUnChoose();
-        }
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            listTube[i].ResetTube();
-            listTube[i].close();
-        }
-    }
-    public void OnSelectTubeGive()
-    {
-
-        List<TubeManagement> TubeGive = new List<TubeManagement>();
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            if (listTube[i].IsHasChoose() == true)
-            {
-                TubeGive.Add(listTube[i]);
-                tubeGive = TubeGive[0];
-                tubeGive.ReadytoChangeGive();
-                break;
-            }
-
-        }
-
-        List<Tube> TubeReceive = new List<Tube>();
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            if (TubeGive.Count == 1 && listTube[i] != TubeGive[0])
-            {
-                listTube[i].ReadytoChangeReceive();
-            }
-
-        }
-
-    }
-
-    public void OnSelectUnChoose()
-    {
-
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            listTube[i].ResetTube();
-        }
-    }
-
-    public void OnSelectChange()
-    {
-
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            if (listTube[i].IsHasChange())
-            {
-                listTube[i].ReadytoChangeGive();
-                tubeReceive = listTube[i];
-                ChangeAncol();
-                *//*StartEffect();*//*
-                CheckFullTube();
-                break;
-            }
-
-        }
-    }
-    public void CheckFullTube()
-    {
-
-        List<TubeManagement> tubeFull = new List<TubeManagement>();
-        for (int i = 0; i < listTube.Count; i++)
-        {
-            var ArrAncolColor = listTube[i].GetAllAncolSameColor();
-            var ArrAncolNoColor = listTube[i].GetAllAncolNoColor();
-            if (ArrAncolColor.Count == 4 || ArrAncolNoColor.Count == 4)
-            {
-                tubeFull.Add(listTube[i]);
-                if (tubeFull.Count == listTube.Count)
-                {
-                   *//* pnVictory.SetActive(true);
-                    btnNextLevel.SetActive(true);*//*
-                }
-            }
-        }
-    }*/
-    // Start is called before the first frame update
+   
     void Start()
     {
 
