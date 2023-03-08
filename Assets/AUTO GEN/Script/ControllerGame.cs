@@ -15,13 +15,13 @@ public class ControllerGame : MonoBehaviour
     int tubeNum, colorNum;
     public InputField colorNumber;
     public GameObject pnStart, pnLevel, message, btnReload, btnStart;
-   
+
     public List<TubeManagement> listTube = new List<TubeManagement>();
 
-    string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };   
+    string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };
 
 
-   
+
     public int ReturnInput(string a)
     {
         a = tubeNumber.text;
@@ -80,7 +80,7 @@ public class ControllerGame : MonoBehaviour
         tubeNum = int.Parse(a);
         colorNum = int.Parse(b);
         Level level = new Level();
-        level.name = "Level " + tubeNum +" Tube " + colorNum + " Color";
+        level.name = "Level " + tubeNum + " Tube " + colorNum + " Color";
         int[] Color = new int[colorNum];
         List<int> listData = new List<int>();
         List<TubeData> newData = new List<TubeData>();
@@ -93,47 +93,92 @@ public class ControllerGame : MonoBehaviour
 
 
         int[,] arrayTube = new int[maxColor, tubeNum];
-
-        for (int idColor = 1; idColor <= Color.Length; idColor++)
+        var round1 = (tubeNum - 2) / colorNum;
+        for (int round = 0; round < round1; round++)
         {
-            for (int m = 0; m < (maxColor); m++)
+            for (int idColor = 1; idColor <= Color.Length; idColor++)
             {
-                var pickTube = UnityEngine.Random.Range(0, tubeNum);
+                for (int m = 0; m < (maxColor); m++)
+                {
+                    var pickTube = UnityEngine.Random.Range(0, tubeNum);
 
-                int count = 0, count1 = 0;
-                for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
-                {
-                    if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
+                    int count = 0, count1 = 0;
+                    for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
                     {
-                        arrayTube[j, pickTube] = idColor;
-                        count++;
-                        break;
-                    }
-                }
-                if (count < 1)
-                {
-                    for (int i = 0; i < tubeNum; i++)
-                    {
-                        for (int j = 0; j < maxColor; j++)
+                        if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
                         {
-                            if (arrayTube[j, i] == ColorImage.NO_COLOR)
+                            arrayTube[j, pickTube] = idColor;
+                            count++;
+                            break;
+                        }
+                    }
+                    if (count < 1)
+                    {
+                        for (int i = 0; i < tubeNum; i++)
+                        {
+                            for (int j = 0; j < maxColor; j++)
                             {
-                                arrayTube[j, i] = idColor;
-                                count1++;
+                                if (arrayTube[j, i] == ColorImage.NO_COLOR)
+                                {
+                                    arrayTube[j, i] = idColor;
+                                    count1++;
+                                    break;
+                                }
+
+                            }
+                            if (count1 > 0)
+                            {
                                 break;
                             }
 
                         }
-                        if (count1 > 0)
-                        {
-                            break;
-                        }
-
                     }
                 }
+            }
+        }
 
+        
+        var round2 = (tubeNum - 2)%colorNum;
+        if(round2 >0)
+        {
+            for (int idColor = 1; idColor <= round2; idColor++)
+            {
+                for (int m = 0; m < (maxColor); m++)
+                {
+                    var pickTube = UnityEngine.Random.Range(0, tubeNum);
 
+                    int count = 0, count1 = 0;
+                    for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
+                    {
+                        if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
+                        {
+                            arrayTube[j, pickTube] = idColor;
+                            count++;
+                            break;
+                        }
+                    }
+                    if (count < 1)
+                    {
+                        for (int i = 0; i < tubeNum; i++)
+                        {
+                            for (int j = 0; j < maxColor; j++)
+                            {
+                                if (arrayTube[j, i] == ColorImage.NO_COLOR)
+                                {
+                                    arrayTube[j, i] = idColor;
+                                    count1++;
+                                    break;
+                                }
 
+                            }
+                            if (count1 > 0)
+                            {
+                                break;
+                            }
+
+                        }
+                    }
+                }
             }
         }
 
@@ -190,7 +235,7 @@ public class ControllerGame : MonoBehaviour
         levelData.listLevel.Add(ActiveLevel);
     }
 
-   
+
     void Start()
     {
 
@@ -199,6 +244,6 @@ public class ControllerGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
