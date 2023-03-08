@@ -21,23 +21,7 @@ public class ControllerGame : MonoBehaviour
     string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };   
 
 
-    /*public void GenTubes()
-    {
-        var a = tubeNumber.text;
-        var b = colorNumber.text;
-        int tubeNum = int.Parse(a);
-        int colorNum = int.Parse(b);
-        ActiveLevel = GetDummyLevel();
-        listTube.Clear();
-
-        for (int i = 0; i < ActiveLevel.listTubeData.Count; i++)
-        {
-            GameObject tubeClone = Instantiate(tube, tubeContainer.transform);
-            tubeClone.name = "Tube" + (i + 1);
-            TubeManagement newtubeClone = tubeClone.GetComponent<TubeManagement>();           
-            newtubeClone.SetColorTube(ActiveLevel.listTubeData[i]);
-            }      
-    }*/
+   
     public int ReturnInput(string a)
     {
         a = tubeNumber.text;
@@ -96,7 +80,7 @@ public class ControllerGame : MonoBehaviour
         tubeNum = int.Parse(a);
         colorNum = int.Parse(b);
         Level level = new Level();
-        level.name = "Level 1";
+        level.name = "Level " + tubeNum +" Tube " + colorNum + " Color";
         int[] Color = new int[colorNum];
         List<int> listData = new List<int>();
         List<TubeData> newData = new List<TubeData>();
@@ -168,88 +152,6 @@ public class ControllerGame : MonoBehaviour
 
         return level;
     }
-    /* private Level GetDummyLevel()
-     {
-         var a = tubeNumber.text;
-         int maxColor = 4;
-         var b = colorNumber.text;
-         int tubeNum = int.Parse(a);
-         int colorNum = int.Parse(b);
-         Level level = new Level();
-         level.name = "Level 1";
-         int[] Color = new int[colorNum];
-         List<int> listData = new List<int>();
-         List<TubeModel> newData = new List<TubeModel>();
-
-         for (int j = 0; j < Color.Length; j++)
-         {
-             Color[j] = j + 1;
-
-         }
-
-
-         int[,] arrayTube = new int[tubeNum -2, maxColor];
-
-         for (int idColor = 1; idColor <= Color.Length; idColor++)
-         {
-             for (int m = 0; m < ((tubeNum - 2) *maxColor)/colorNum; m++)
-             {
-                 var pickTube = UnityEngine.Random.Range(0, tubeNum - 2);
-
-                 int count = 0, count1 = 0;
-                 for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
-                 {
-                     if (arrayTube[ pickTube,j] == ColorImage.NO_COLOR)
-                     {
-                         arrayTube[pickTube, j] = idColor;
-                         count++;
-                         break;
-                     }
-                 }
-                 if (count < 1)
-                 {
-                     for (int i = 0; i < tubeNum - 2; i++)
-                     {
-                         for (int j = 0; j < maxColor; j++)
-                         {
-                             if (arrayTube[i,j] == ColorImage.NO_COLOR)
-                             {
-                                 arrayTube[i, j] = idColor;
-                                 count1++;
-                                 break;
-                             }
-
-                         }
-                         if (count1 > 0)
-                         {
-                             break;
-                         }
-
-                     }
-                 }
-
-
-
-             }
-         }
-
-
-
-         for (int i = 0; i < tubeNum - 2; i++)
-         {
-             TubeModel data = new TubeModel(0, colorNum);
-             data.Color = new int[maxColor];
-             for (int j = 0; j < maxColor; j++)
-             {
-                 data.Color[j] = arrayTube[i, j];
-             }
-             newData.Add(data);
-         }
-
-         level.listTubeData = newData;
-
-         return level;
-     }*/
 
 
     public void StartButton()
@@ -281,6 +183,11 @@ public class ControllerGame : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene("Auto Gen");
+    }
+    public AllLevelData levelData;
+    public void ButtonSave()
+    {
+        levelData.listLevel.Add(ActiveLevel);
     }
 
    

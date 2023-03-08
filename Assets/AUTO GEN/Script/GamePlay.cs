@@ -133,6 +133,10 @@ public class GamePlay : MonoBehaviour
             {
                 Tubes[i].Particice();
             }
+            else
+            {
+                Tubes[i].EndPar();
+            }
         }
     }
 
@@ -154,5 +158,9 @@ public class GamePlay : MonoBehaviour
                 }
             }
         }
+    }
+    private void Update()
+    {
+       
     }
 }

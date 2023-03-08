@@ -24,6 +24,10 @@ public class TubeManagement : MonoBehaviour
     {
         particeSys.SetActive(true);
     }
+    public void EndPar()
+    {
+        particeSys.SetActive(false);
+    }
     public void ResetDataTube()
     {
         int count = 0;
