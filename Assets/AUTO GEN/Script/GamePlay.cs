@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,8 @@ public class GamePlay : MonoBehaviour
     public List<TubeManagement> Tubes;
     public TubeManagement tubeGive;
     public TubeManagement tubeReceive;
-    public ControllerGame giveData;
+    public GenLevel giveData;
+    public GameObject pnVictory;
 
     private void Start()
     {
@@ -19,10 +20,38 @@ public class GamePlay : MonoBehaviour
         for (int i = 0; i < Tubes.Count; i++)
         {
             Tubes[i].ResetDataTube();
-            /*Tubes[i].EndEffect();*/
+            Tubes[i].EndPar();
         }
     }
 
+    public void BackOneAction()
+    {
+        tubeGive.ResetDataTube();
+        tubeReceive.ResetDataTube();
+    }
+
+
+    public void MoveTubeGive()
+    {
+        Vector3 originalPosition = tubeGive.transform.position;
+        if(tubeGive.transform.position.x > tubeReceive.transform.position.x)
+        {
+            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x + 10, tubeReceive.transform.position.y +6, tubeReceive.transform.position.z);
+            StartCoroutine(TubeBackPosition(originalPosition));
+        }
+        else
+        {
+            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x - 10, tubeReceive.transform.position.y + 6, tubeReceive.transform.position.z);
+            StartCoroutine(TubeBackPosition(originalPosition));
+        }
+       
+    }
+    IEnumerator TubeBackPosition(Vector3 a)
+    {
+        
+        yield return new WaitForSeconds(0.6f);
+        tubeGive.transform.position = a;
+    }
     public void ChangeAncol()
     {
 
@@ -36,6 +65,7 @@ public class GamePlay : MonoBehaviour
                 tubeReceive.ReceiveAllAncol(newArrGive);
                 tubeGive.MoveTubeBack();
                 CheckEffect();
+                MoveTubeGive();
 
             }
             else
@@ -49,6 +79,7 @@ public class GamePlay : MonoBehaviour
             tubeReceive.ReceiveAllAncol(newArrGive);
             tubeGive.MoveTubeBack();
             CheckEffect();
+            MoveTubeGive();
         }
 
         for (int i = 0; i < Tubes.Count; i++)
@@ -153,8 +184,7 @@ public class GamePlay : MonoBehaviour
                 tubeFull.Add(Tubes[i]);
                 if (tubeFull.Count == Tubes.Count)
                 {
-                    /*pnVictory.SetActive(true);
-                    btnNextLevel.SetActive(true);*/
+                    pnVictory.SetActive(true);
                 }
             }
         }

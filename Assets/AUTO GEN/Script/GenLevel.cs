@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ControllerGame : MonoBehaviour
+public class GenLevel : MonoBehaviour
 {
     public Level ActiveLevel;
     public GameObject tube, tubeContainer;
@@ -100,7 +100,7 @@ public class ControllerGame : MonoBehaviour
             {
                 for (int m = 0; m < (maxColor); m++)
                 {
-                    var pickTube = UnityEngine.Random.Range(0, tubeNum);
+                    var pickTube = UnityEngine.Random.Range(0, tubeNum -2);
 
                     int count = 0, count1 = 0;
                     for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
@@ -114,7 +114,7 @@ public class ControllerGame : MonoBehaviour
                     }
                     if (count < 1)
                     {
-                        for (int i = 0; i < tubeNum; i++)
+                        for (int i = 0; i < tubeNum -2; i++)
                         {
                             for (int j = 0; j < maxColor; j++)
                             {
@@ -145,7 +145,7 @@ public class ControllerGame : MonoBehaviour
             {
                 for (int m = 0; m < (maxColor); m++)
                 {
-                    var pickTube = UnityEngine.Random.Range(0, tubeNum);
+                    var pickTube = UnityEngine.Random.Range(0, tubeNum-2);
 
                     int count = 0, count1 = 0;
                     for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
@@ -159,7 +159,7 @@ public class ControllerGame : MonoBehaviour
                     }
                     if (count < 1)
                     {
-                        for (int i = 0; i < tubeNum; i++)
+                        for (int i = 0; i < tubeNum-2; i++)
                         {
                             for (int j = 0; j < maxColor; j++)
                             {

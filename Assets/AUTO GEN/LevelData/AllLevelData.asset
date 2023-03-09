@@ -12,10 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8451fac4110bc7b47b09137023b533ed, type: 3}
   m_Name: AllLevelData
   m_EditorClassIdentifier: 
-  listLevel:
-  - name: Level 4 Tube 2 Color
-    listTubeData:
-    - Color: 02000000000000000000000000000000
-    - Color: 01000000020000000200000000000000
-    - Color: 00000000000000000000000000000000
-    - Color: 01000000010000000100000002000000
+  listLevel: []

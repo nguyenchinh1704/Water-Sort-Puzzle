@@ -204,12 +204,12 @@ public class TubeManagement : MonoBehaviour
         btnChoose.SetActive(false);
     }
 
-    public float timeRotate = 0.6f;
+    public float timeRotate = 0.3f;
     public float directionMutiplier = 1.0f;
 
 
     public void MoveTube()
-    {
+    {    
         transform.position = new Vector3(transform.position.x, transform.position.y + 6, transform.position.z);
     }
 
@@ -218,6 +218,13 @@ public class TubeManagement : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y -6 , transform.position.z);
     }
+
+    IEnumerator TubeBack(Vector3 a)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+    }
+
 
     public void EffectRotateLeft()
     {
@@ -238,7 +245,6 @@ public class TubeManagement : MonoBehaviour
             angleValue = Mathf.Lerp(0.0f, 60.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
-            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
             t += Time.deltaTime;
             lastAnglevalue = angleValue;
             yield return new WaitForEndOfFrame();
@@ -258,7 +264,6 @@ public class TubeManagement : MonoBehaviour
             angleValue = Mathf.Lerp(directionMutiplier * 60.0f, 0.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
-            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
 
             lastAnglevalue = angleValue;
             t += Time.deltaTime;
@@ -267,7 +272,6 @@ public class TubeManagement : MonoBehaviour
         angleValue = 0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
 
-        /*StartCoroutine(MoveTubeBack());*/
     }
     IEnumerator RotateTubeRight()
     {
@@ -280,7 +284,6 @@ public class TubeManagement : MonoBehaviour
             angleValue = Mathf.Lerp(0.0f, -60.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
-            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
             t += Time.deltaTime;
             lastAnglevalue = angleValue;
             yield return new WaitForEndOfFrame();
@@ -299,8 +302,7 @@ public class TubeManagement : MonoBehaviour
             lerpValue = t / timeRotate;
             angleValue = Mathf.Lerp(directionMutiplier * -60.0f, 0.0f, lerpValue);
 
-            transform.eulerAngles = new Vector3(0, 0, angleValue);
-            /*transform.RotateAround(chosenRotationPoint.position, Vector3.forward, lastAnglevalue - angleValue);*/
+            transform.eulerAngles = new Vector3(0, 0, angleValue);           
 
             lastAnglevalue = angleValue;
             t += Time.deltaTime;
@@ -308,7 +310,5 @@ public class TubeManagement : MonoBehaviour
         }
         angleValue = 0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
-
-        /*StartCoroutine(MoveTubeBack());*/
     }
 }
