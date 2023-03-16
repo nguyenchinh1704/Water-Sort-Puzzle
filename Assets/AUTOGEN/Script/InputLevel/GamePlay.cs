@@ -50,7 +50,7 @@ public class GamePlay : MonoBehaviour
     IEnumerator TubeBackPosition(Vector3 a)
     {
         
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
         tubeGive.transform.position = a;
     }
     public void ChangeAncol()
@@ -150,7 +150,7 @@ public class GamePlay : MonoBehaviour
                 tubeReceive = Tubes[i];
                 ChangeAncol();
                 CheckOneTube();
-                CheckFullTube();
+                StartCoroutine( CheckFullTube());
                 break;
             }
 
@@ -172,8 +172,9 @@ public class GamePlay : MonoBehaviour
         }
     }
 
-    public void CheckFullTube()
+    IEnumerator CheckFullTube()
     {
+        yield return new WaitForSeconds(1.5f);
 
         List<TubeManagement> tubeFull = new List<TubeManagement>();
         for (int i = 0; i < Tubes.Count; i++)
@@ -186,10 +187,20 @@ public class GamePlay : MonoBehaviour
                 if (tubeFull.Count == Tubes.Count)
                 {
                     pnVictory.SetActive(true);
+                    
                 }
             }
         }
+
+        if(tubeFull.Count == Tubes.Count)
+        {
+            for (int i = 0; i < Tubes.Count; i++)
+            {
+                Tubes[i].EndPar();
+            }
+        }
     }
+    
     private void Update()
     {
        

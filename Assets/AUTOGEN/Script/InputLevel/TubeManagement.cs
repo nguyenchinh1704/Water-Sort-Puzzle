@@ -43,10 +43,11 @@ public class TubeManagement : MonoBehaviour
         }
     }
     public void Choose()
-    {      
+    {
         btnChoose.SetActive(false);
         isChoose = true;
         MoveTube();
+        CheckColor();
     }
     public void UnChoose()
     {
@@ -61,14 +62,23 @@ public class TubeManagement : MonoBehaviour
 
     #region ButtonChange
 
-    
+
     public void Change()
     {
         btnChange.SetActive(false);
         isChange = true;
     }
     #endregion
+    public int[] GetAllAncol()
+    {
+        int[] Color = new int[listImage.Count];
+        for (int i = 0; i < listImage.Count; i++)
+        {
+            Color[i] = listImage[i].ReturnColor();
+        }
 
+        return Color;
+    }
 
     public ColorImage GettopAncol()
     {
@@ -169,6 +179,14 @@ public class TubeManagement : MonoBehaviour
         }
 
     }
+    public void SetColorByData(int[] color)
+    {
+        for (int i = 0; i < color.Length; i++)
+        {          
+                listImage[i].SetColor(color[i]);
+                listImage[i].Check(color[i]);
+        }
+    }
 
 
 
@@ -203,20 +221,26 @@ public class TubeManagement : MonoBehaviour
         btnChange.SetActive(false);
         btnChoose.SetActive(false);
     }
+    public void LockTube()
+    {
+        btnUnChoose.SetActive(false);
+        btnChange.SetActive(false);
+        btnChoose.SetActive(false);
+    }
 
-    public float timeRotate = 0.3f;
-    public float directionMutiplier = 0.5f;
+    public float timeRotate = 0.5f;
+    public float directionMutiplier = 1f;
 
 
     public void MoveTube()
-    {    
+    {
         transform.position = new Vector3(transform.position.x, transform.position.y + 6, transform.position.z);
     }
 
     public void MoveTubeBack()
     {
 
-        transform.position = new Vector3(transform.position.x, transform.position.y -6 , transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 6, transform.position.z);
     }
 
     IEnumerator TubeBack(Vector3 a)
@@ -242,14 +266,14 @@ public class TubeManagement : MonoBehaviour
         while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
-            angleValue = Mathf.Lerp(0.0f, 60.0f, lerpValue);
+            angleValue = Mathf.Lerp(0.0f, 45.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
             t += Time.deltaTime;
             lastAnglevalue = angleValue;
             yield return new WaitForEndOfFrame();
         }
-        angleValue = 60.0f;
+        angleValue = 45.0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
         StartCoroutine(RotateTubeLeftBack());
     }
@@ -261,7 +285,7 @@ public class TubeManagement : MonoBehaviour
         while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
-            angleValue = Mathf.Lerp(directionMutiplier * 60.0f, 0.0f, lerpValue);
+            angleValue = Mathf.Lerp(directionMutiplier * 45.0f, 0.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
 
@@ -281,7 +305,7 @@ public class TubeManagement : MonoBehaviour
         while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
-            angleValue = Mathf.Lerp(0.0f, -60.0f, lerpValue);
+            angleValue = Mathf.Lerp(0.0f, -45.0f, lerpValue);
 
             transform.eulerAngles = new Vector3(0, 0, angleValue);
             t += Time.deltaTime;
@@ -300,9 +324,9 @@ public class TubeManagement : MonoBehaviour
         while (t < timeRotate)
         {
             lerpValue = t / timeRotate;
-            angleValue = Mathf.Lerp(directionMutiplier * -60.0f, 0.0f, lerpValue);
+            angleValue = Mathf.Lerp(directionMutiplier * -45.0f, 0.0f, lerpValue);
 
-            transform.eulerAngles = new Vector3(0, 0, angleValue);           
+            transform.eulerAngles = new Vector3(0, 0, angleValue);
 
             lastAnglevalue = angleValue;
             t += Time.deltaTime;
@@ -311,4 +335,50 @@ public class TubeManagement : MonoBehaviour
         angleValue = 0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
     }
+    public int[] CheckColor()
+    {
+        int[] data = new int[listImage.Count];
+        for (int i = 0; i < listImage.Count; i++)
+        {
+            if(listImage[i].IsHasActive() == true)
+            {
+                if (listImage[i].img.color == Color.green)
+                {
+                    data[i] = 1;
+                }
+                if (listImage[i].img.color == Color.blue)
+                {
+                    data[i] = 2;
+                }
+                if (listImage[i].img.color == Color.yellow)
+                {
+                    data[i] = 3;
+                }
+                if (listImage[i].img.color == Color.gray)
+                {
+                    data[i] = 4;
+                }
+                if (listImage[i].img.color == Color.cyan)
+                {
+                    data[i] = 5;
+                }
+                if (listImage[i].img.color == Color.magenta)
+                {
+                    data[i] = 6;
+                }
+                if (listImage[i].img.color == Color.black)
+                {
+                    data[i] = 7;
+                }
+                if (listImage[i].img.color == Color.red)
+                {
+                    data[i] = 8;
+                }
+            }
+            
+        }
+
+        return data;
+    }
+
 }

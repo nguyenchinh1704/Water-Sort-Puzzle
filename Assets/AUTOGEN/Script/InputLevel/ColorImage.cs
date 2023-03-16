@@ -10,6 +10,7 @@ public class ColorImage : MonoBehaviour
     bool hasColor;
     /*string data;*/
     int data_int;
+    bool hasActivel;
     /*public void SetColor(Color color)
     {
         img.color = color;
@@ -57,6 +58,7 @@ public class ColorImage : MonoBehaviour
             default: return Color.white;
         }
     }
+
     public void SetColor(int color)
     {
 
@@ -70,14 +72,16 @@ public class ColorImage : MonoBehaviour
         {
             hasColor = true;
             img.gameObject.SetActive(true);
+            hasActivel = true;
         }
 
 
     }
     public void RemoveColor()
-    {     
-            hasColor = false;
-            img.gameObject.SetActive(false);
+    {
+        hasColor = false;
+        img.gameObject.SetActive(false);
+        hasActivel = false;
     }
 
     public void Check(int valueData)
@@ -85,12 +89,17 @@ public class ColorImage : MonoBehaviour
         if (valueData == 0)
         {
             img.gameObject.SetActive(false);
+            hasActivel = false;
         }
     }
 
     internal bool IsHasColor()
     {
         return hasColor;
+    }
+    internal bool IsHasActive()
+    {
+        return hasActivel;
     }
 
     internal bool IsSameColor(ColorImage image)

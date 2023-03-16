@@ -13,6 +13,7 @@ public class AllLevelData : ScriptableObject
 [System.Serializable]
 public class Level
 {
+    public int totalTime;
     public string name;
     public List<TubeData> listTubeData;
     /// so tube, so color khac nhau

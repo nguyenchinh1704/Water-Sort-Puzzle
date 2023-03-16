@@ -18,18 +18,6 @@ public class GenLevel : MonoBehaviour
     public Text textLevel;
     public List<TubeManagement> listTube = new List<TubeManagement>();
 
-    string[] colorR = new string[8] { "R", "G", "B", "Y", "X", "w", "P", "K" };
-
-
-
-    public int ReturnInput(string a)
-    {
-        a = tubeNumber.text;
-        tubeNum = int.Parse(a);
-
-        return tubeNum;
-    }
-
 
 
     public void GenTubes()
@@ -49,28 +37,7 @@ public class GenLevel : MonoBehaviour
     }
 
 
-    /*private Level GetDummyLevel()
-    {
-        var a = tubeNumber.text;
-        var b = colorNumber.text;
-        int tubeNum = int.Parse(a);
-        int colorNum = int.Parse(b);
-        Level level = new Level();
-        level.name = "Level 1";
-        TubeModel data1 = new TubeModel(0, 3);
-        data1.Color = new int[3] { 1, 2, 3};
-        TubeModel data2 = new TubeModel(1, 3);
-        data2.Color = new int[3] { 3, 1, 2 };
-        TubeModel data3 = new TubeModel(2, 3);
-        data3.Color = new int[3] { 2, 3, 1 };
-        level.listTubeData = new List<TubeModel>();
-        level.listTubeData.Add(data1);
-        level.listTubeData.Add(data2);
-        level.listTubeData.Add(data3);
-
-
-        return level;
-    }*/
+    
 
     private Level GetDummyLevel()
     {
