@@ -14,6 +14,7 @@ public class ButtonEven : MonoBehaviour
     public Text textLevel;
     public LoadLevel level;
     public AllLevelData card;
+    public ManagementGame game;
     
 
 
@@ -33,6 +34,7 @@ public class ButtonEven : MonoBehaviour
         pnStart.close();
         pnLevel.show();
         pnSetting.close();
+
     }
     public void ButtonPause()
     {
@@ -62,6 +64,7 @@ public class ButtonEven : MonoBehaviour
         pnVictory.close();
         pnStart.show();
         pnLevel.close();
+        PlayerPrefs.SetInt("idLevel", level.idLevel);
         SceneManager.LoadScene("Auto Gen");
 
     }
@@ -70,7 +73,7 @@ public class ButtonEven : MonoBehaviour
         pnStart.show();
         pnLevel.close();
         pnDefeated.close();
-        level.count = PlayerPrefs.GetInt("idLevel") - 1;   
+        level.ButtonRestart();
     }   
     public void BtnSetting()
     {
@@ -83,15 +86,14 @@ public class ButtonEven : MonoBehaviour
     public void BtnOk()
     {
         PlayerPrefs.DeleteKey("idLevel");
-        pnSetting.close();
-        pnMessage.show();
-        StartCoroutine(Autooff());
+        SceneManager.LoadScene("Auto Gen");
     }
     public void BtnHome()
     {
         /*pnPause.close();
         pnLevel.close();
-        pnStart.show();*/
+        pnStart.show();
+        PlayerPrefs.SetInt("idLevel", level.idLevel);*/
         SceneManager.LoadScene("Auto Gen");
     }
     IEnumerator Autooff()

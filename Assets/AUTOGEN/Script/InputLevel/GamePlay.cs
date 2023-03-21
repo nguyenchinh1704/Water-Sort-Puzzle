@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GamePlay : MonoBehaviour
 {
-    public List<TubeManagement> Tubes;
-    public TubeManagement tubeGive;
-    public TubeManagement tubeReceive;
+    public List<TubeManagement1> Tubes;
+    public TubeManagement1 tubeGive;
+    public TubeManagement1 tubeReceive;
     public GenLevel giveData;
     public GameObject pnVictory;
 
@@ -28,7 +28,7 @@ public class GamePlay : MonoBehaviour
     {
         var newArrGive = tubeReceive.GetAllAncolSameColor();
         var newArrReceive = tubeGive.GetAllAncolNoColor();
-        tubeGive.ReceiveAllAncol(newArrGive);
+        tubeGive.StartChange(newArrGive);
     }
 
 
@@ -50,7 +50,7 @@ public class GamePlay : MonoBehaviour
     IEnumerator TubeBackPosition(Vector3 a)
     {
         
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
         tubeGive.transform.position = a;
     }
     public void ChangeAncol()
@@ -63,7 +63,8 @@ public class GamePlay : MonoBehaviour
         {
             if (newArrGive[0].IsSameColor(newCheck[0]))
             {
-                tubeReceive.ReceiveAllAncol(newArrGive);
+                tubeReceive.StartChange(newArrGive);
+                /*  tubeGive.EndChoose();*/
                 tubeGive.MoveTubeBack();
                 CheckEffect();
                 MoveTubeGive();
@@ -72,12 +73,14 @@ public class GamePlay : MonoBehaviour
             else
             {
                 OnSelectUnChoose();
+                /*tubeGive.EndChoose();*/
                 tubeGive.MoveTubeBack();
             }
         }
         else
         {
-            tubeReceive.ReceiveAllAncol(newArrGive);
+            tubeReceive.StartChange(newArrGive);
+            /*tubeGive.EndChoose();*/
             tubeGive.MoveTubeBack();
             CheckEffect();
             MoveTubeGive();
@@ -109,8 +112,8 @@ public class GamePlay : MonoBehaviour
         {
             if (Tubes[i].IsHasChoose() == true)
             {
-                TubeGive.Add(Tubes[i]);
-                tubeGive = TubeGive[0];
+                /*TubeGive.Add(Tubes[i]);
+                tubeGive = TubeGive[0];*/
                 tubeGive.ReadytoChangeGive();
                 break;
             }
@@ -176,7 +179,7 @@ public class GamePlay : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        List<TubeManagement> tubeFull = new List<TubeManagement>();
+        List<TubeManagement1> tubeFull = new List<TubeManagement1>();
         for (int i = 0; i < Tubes.Count; i++)
         {
             var ArrAncolColor = Tubes[i].GetAllAncolSameColor();

@@ -10,11 +10,15 @@ public class ManagementGame : MonoBehaviour
     public TubeManagement tubeGive;
     public TubeManagement tubeReceive;
     public LoadLevel giveData;
-    public UIElement pnVictory;
+    public UIElement pnVictory, EffectVc;
     public Text textLevel;
     public int count = 0;
+    int check;
+
 
     List<int[,]> DataAll = new List<int[,]>();
+    List<TubeManagement> Give = new List<TubeManagement>();
+    public List<Vector3> dataPosition = new List<Vector3>();
     private void Start()
     {
         Tubes = giveData.listTube;
@@ -26,25 +30,31 @@ public class ManagementGame : MonoBehaviour
         {
             Tubes[i].ResetDataTube();
             Tubes[i].EndPar();
+            Tubes[i].ResetTube();
+            Tubes[i].EndChoose();
         }
 
         DataAll.Clear();
+        Give.Clear();
+        dataPosition.Clear();
+
+        count = 0;
     }
 
     public void BackOneAction()
-    { 
+    {
         var newData = ReturnDataAll(DataAll[count - 1]);
         for (int i = 0; i < Tubes.Count; i++)
         {
             Tubes[i].SetColorByData(newData[i]);
         }
         DataAll.Remove(DataAll[count - 1]);
-        CheckOneTube();
+        StartCoroutine(CheckOneTube());
         count--;
     }
     public List<int[]> ReturnDataAll(int[,] array)
     {
-        List<int[]> saveData = new List<int[]>();       
+        List<int[]> saveData = new List<int[]>();
         for (int i = 0; i < Tubes.Count; i++)
         {
             int[] data = new int[tubeGive.listImage.Count];
@@ -56,79 +66,167 @@ public class ManagementGame : MonoBehaviour
         }
         return saveData;
     }
+    public void CheckPositionTube()
+    {
+        Vector3 originalPosition;
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            originalPosition = Tubes[i].transform.position;
+            dataPosition.Add(originalPosition);
+        }
+    }
 
+
+    IEnumerator BackPosition(TubeManagement tube)
+    {
+        yield return new WaitForSeconds(1.2f);
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            if(tube == Tubes[i])
+            Tubes[i].transform.position = dataPosition[i];
+        }
+    }
 
     public void MoveTubeGive()
     {
         Vector3 originalPosition = tubeGive.transform.position;
         if (tubeGive.transform.position.x > tubeReceive.transform.position.x)
         {
-            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x + 10, tubeReceive.transform.position.y + 6, tubeReceive.transform.position.z);
-            StartCoroutine(TubeBackPosition(originalPosition));
+            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x + 10, tubeReceive.transform.position.y + 11, tubeReceive.transform.position.z);
         }
         else
         {
-            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x - 10, tubeReceive.transform.position.y + 6, tubeReceive.transform.position.z);
-            StartCoroutine(TubeBackPosition(originalPosition));
+            tubeGive.transform.position = new Vector3(tubeReceive.transform.position.x - 10, tubeReceive.transform.position.y + 11, tubeReceive.transform.position.z);
         }
 
     }
-    IEnumerator TubeBackPosition(Vector3 a)
-    {
 
-        yield return new WaitForSeconds(1.2f);
-        tubeGive.transform.position = a;
-    }
-    public void LockTube()
+    public Vector3 ReturnPosition()
     {
+        Vector3 position = new Vector3(0, 0, 0);
         for (int i = 0; i < Tubes.Count; i++)
         {
-            Tubes[i].LockTube();
+            if (tubeGive == Tubes[i])
+            {
+                position = dataPosition[i];
+            }
         }
+
+        return position;
     }
+
+
     public void ChangeAncol()
     {
         var newArrGive = tubeGive.GetAllAncolSameColor();
         var newArrReceive = tubeReceive.GetAllAncolNoColor();
         var newCheck = tubeReceive.ColoringCondition();
         var newData = CheckDataAlltube();
+        check = CheckImageIntube(tubeGive);
+        Give.Add(tubeGive);
         DataAll.Add(newData);
-        if (newCheck.Count > 0)
+        if (newArrGive.Count > 0 && newCheck.Count > 0)
         {
-            if (newArrGive[0].IsSameColor(newCheck[0]))
+            if (newArrGive[0].IsSameColor(newCheck[0]) && newArrReceive.Count > 0)
             {
-                tubeReceive.ReceiveAllAncol(newArrGive);
-                tubeGive.MoveTubeBack();
-                CheckEffect();
+                tubeReceive.StartChange(newArrGive);
+                tubeGive.EndChoose();
                 MoveTubeGive();
-                LockTube();
+                CheckEffect();
+                StartCoroutine(BackPosition(tubeGive));
                 count++;
-
             }
             else
             {
                 OnSelectUnChoose();
-                tubeGive.MoveTubeBack();
+                tubeGive.EndChoose();
+                Give.Remove(tubeGive);
 
             }
         }
+        else if (newArrGive.Count == 0)
+        {
+            tubeGive.EndChoose();
+            Give.Remove(tubeGive);
+            OnSelectUnChoose();
+        }
         else
         {
-            tubeReceive.ReceiveAllAncol(newArrGive);
-            tubeGive.MoveTubeBack();
-            CheckEffect();
+            tubeReceive.StartChange(newArrGive);
+            tubeGive.EndChoose();
             MoveTubeGive();
-            LockTube();
+            CheckEffect();
+            StartCoroutine(BackPosition(tubeGive));
+
             count++;
         }
-        StartCoroutine(UnlockTube());
+
     }
-    IEnumerator UnlockTube()
+    public int CheckLengthImageFlow(TubeManagement tube)
     {
-        yield return new WaitForSeconds(1.5f);
-        for (int i = 0; i < Tubes.Count; i++)
+        int count = 0;
+        for (int i = 0; i < tube.listImage.Count; i++)
         {
-            Tubes[i].ResetTube();
+            if (tube.listImage[i].IsHasColor() == true)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int CheckImageIntube(TubeManagement tube)
+    {
+        int data = 0;
+        int[] array = new int[tube.listImage.Count];
+        array = tube.CheckColor();
+        for (int i = array.Length - 1; i >= 0; i--)
+        {
+            if (array[i] != 0)
+            {
+                data = array[i];
+                break;
+            }
+        }
+        return data;
+    }
+    IEnumerator SetActiveImage(ColorImage image)
+    {
+        var m = CheckLengthImageFlow(tubeReceive);
+        yield return new WaitForSeconds(0.4f);
+        image.gameObject.SetActive(true);
+        image.SetSize(14, 580 - 120 * m);
+        image.SetColorFlow(check);
+        StartCoroutine(AutoOff(image));
+    }
+
+    IEnumerator AutoOff(ColorImage image)
+    {
+        yield return new WaitForSeconds(0.2f);
+        image.gameObject.SetActive(false);
+    }
+    public void EffectReceive(TubeManagement tube)
+    {
+        var array = tube.GetAllAncolNoColor();
+        for (int i = 0; i < array.Count; i++)
+        {
+            array[i].show.show();
+        }
+    }
+
+    public void EffectGive(TubeManagement tube, List<ColorImage> list)
+    {
+        var array = tube.GetAllAncolSameColor();
+        int i = array.Count - 1;
+        int dem = 0;
+        for (; i > 0; i--)
+        {
+            array[i].endShow.show();
+            dem++;
+            if (dem == list.Count)
+            {
+                break;
+            }
         }
     }
     public void CheckEffect()
@@ -137,12 +235,23 @@ public class ManagementGame : MonoBehaviour
         var b = tubeReceive.transform.position.x;
         if (a < b)
         {
-            tubeGive.EffectRotateRight();
+            tubeGive.ShowRight();
+            StartCoroutine(SetActiveImage(tubeGive.right));
         }
         else
         {
-            tubeGive.EffectRotateLeft();
+            if (a == b)
+            {
+                tubeGive.ShowRight();
+                StartCoroutine(SetActiveImage(tubeGive.right));
+            }
+            else
+            {
+                tubeGive.ShowLeft();
+                StartCoroutine(SetActiveImage(tubeGive.left));
+            }
         }
+
     }
     public void OnSelectTubeGive()
     {
@@ -183,18 +292,16 @@ public class ManagementGame : MonoBehaviour
 
     public void OnSelectChange()
     {
-
-
         for (int i = 0; i < Tubes.Count; i++)
         {
+            CheckPositionTube();
             if (Tubes[i].IsHasChange())
             {
-                /* Tubes[i].ReadytoChangeGive();*/
                 tubeReceive = Tubes[i];
                 ChangeAncol();
-                CheckOneTube();
+                OnSelectUnChoose();
+                StartCoroutine(CheckOneTube());
                 StartCoroutine(CheckFullTube());
-                
                 break;
             }
 
@@ -205,8 +312,9 @@ public class ManagementGame : MonoBehaviour
     {
         PlayerPrefs.SetInt("idLevel", giveData.idLevel);
     }
-    public void CheckOneTube()
+    IEnumerator CheckOneTube()
     {
+        yield return new WaitForSeconds(1.5f);
         for (int i = 0; i < Tubes.Count; i++)
         {
             var ArrAncolColor = Tubes[i].GetAllAncolSameColor();
@@ -223,7 +331,7 @@ public class ManagementGame : MonoBehaviour
 
     IEnumerator CheckFullTube()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         List<TubeManagement> tubeFull = new List<TubeManagement>();
         for (int i = 0; i < Tubes.Count; i++)
@@ -235,11 +343,16 @@ public class ManagementGame : MonoBehaviour
                 tubeFull.Add(Tubes[i]);
                 if (tubeFull.Count == Tubes.Count)
                 {
-                    pnVictory.show(true);
-                    giveData.StopAllCoroutines();                  
+                    pnVictory.show();
+                    isShow = true;
+                    giveData.StopAllCoroutines();
                     textLevel.text = giveData.textLevel.text;
+                    DataAll.Clear();
+                    Give.Clear();
+                    dataPosition.Clear();
+                    count = 0;
                     SaveLevel();
-
+                    StartCoroutine(LoopEffect());
                 }
             }
         }
@@ -250,6 +363,15 @@ public class ManagementGame : MonoBehaviour
             {
                 Tubes[i].EndPar();
             }
+        }
+    }
+    bool isShow = false;
+    IEnumerator LoopEffect()
+    {
+        while (isShow == true)
+        {
+            EffectVc.show();
+            yield return new WaitForSeconds(3f);
         }
     }
 
@@ -275,6 +397,7 @@ public class ManagementGame : MonoBehaviour
 
         return data;
     }
+
     private void Update()
     {
 

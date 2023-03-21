@@ -16,7 +16,7 @@ public class GenLevel : MonoBehaviour
     public InputField colorNumber;
     public GameObject pnStart, pnLevel, message, btnReload, btnStart;
     public Text textLevel;
-    public List<TubeManagement> listTube = new List<TubeManagement>();
+    public List<TubeManagement1> listTube = new List<TubeManagement1>();
 
 
 
@@ -29,7 +29,7 @@ public class GenLevel : MonoBehaviour
         {
             GameObject tubeClone = Instantiate(tube, tubeContainer.transform);
             tubeClone.name = "Tube" + i;
-            TubeManagement newtubeClone = tubeClone.GetComponent<TubeManagement>();
+            TubeManagement1 newtubeClone = tubeClone.GetComponent<TubeManagement1>();
             listTube.Add(newtubeClone);
             listTube[i].SetColorTube(ActiveLevel.listTubeData[i]);
 
