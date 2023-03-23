@@ -14388,7 +14388,7 @@ MonoBehaviour:
   _id: 
   _foldoutControl: 1
   _foldoutEvents: 0
-  _duration: 0.45
+  _duration: 0.15
   timeMode: 1
   wrapMode: 0
   arrivedAction: 3
@@ -27317,7 +27317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -260}
+  m_AnchoredPosition: {x: 75.00001, y: -260}
   m_SizeDelta: {x: 150, y: 520}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959291274
@@ -28447,7 +28447,7 @@ MonoBehaviour:
   _id: 
   _foldoutControl: 1
   _foldoutEvents: 0
-  _duration: 0.15
+  _duration: 0.05
   timeMode: 1
   wrapMode: 0
   arrivedAction: 3
@@ -47252,7 +47252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -520}
+  m_AnchoredPosition: {x: 74.99995, y: -520}
   m_SizeDelta: {x: 150, y: 120}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1723080249
@@ -47358,10 +47358,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-        _foldout: 1
+        _foldout: 0
         _comment: 
         runtimeFrom: 0
-        from: {x: 1, y: 0, z: 1}
+        from: {x: 0, y: 0, z: 0}
         to: {x: 1, y: 1, z: 1}
         relative: 0
         target: {fileID: 1723080248}
@@ -48179,7 +48179,7 @@ MonoBehaviour:
   _id: 
   _foldoutControl: 1
   _foldoutEvents: 0
-  _duration: 0.3
+  _duration: 0.1
   timeMode: 1
   wrapMode: 0
   arrivedAction: 3
@@ -63039,7 +63039,7 @@ MonoBehaviour:
   _id: 
   _foldoutControl: 1
   _foldoutEvents: 0
-  _duration: 0.6
+  _duration: 0.2
   timeMode: 1
   wrapMode: 0
   arrivedAction: 3

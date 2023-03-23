@@ -314,7 +314,7 @@ public class ManagementGame : MonoBehaviour
     }
     IEnumerator CheckOneTube()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         for (int i = 0; i < Tubes.Count; i++)
         {
             var ArrAncolColor = Tubes[i].GetAllAncolSameColor();
