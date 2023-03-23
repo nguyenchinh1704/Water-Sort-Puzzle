@@ -1223,6 +1223,8 @@ GameObject:
   - component: {fileID: 181939082}
   - component: {fileID: 181939081}
   - component: {fileID: 181939083}
+  - component: {fileID: 181939085}
+  - component: {fileID: 181939084}
   m_Layer: 5
   m_Name: Image Right
   m_TagString: Untagged
@@ -1301,8 +1303,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 181939081}
-  show: {fileID: 0}
+  show: {fileID: 181939084}
   endShow: {fileID: 0}
+--- !u!114 &181939084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181939079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1304d750adf203b478af0c021cd6c17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localTweenShow: {fileID: 181939085}
+  _onShowUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onHideUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  RegisterOnBack: 0
+  indexLayer: 0
+--- !u!114 &181939085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181939079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdc95d9dfe9cf54398eecb6868b0335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateMode: 0
+  _id: 
+  _foldoutControl: 1
+  _foldoutEvents: 0
+  _duration: 0.25
+  timeMode: 1
+  wrapMode: 0
+  arrivedAction: 3
+  sampleOnAwake: 0
+  runOnEnable: 0
+  _onForwardArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _onBackArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _animations:
+  - rid: 3126250731684233223
+  references:
+    version: 2
+    RefIds:
+    - rid: 3126250731684233223
+      type: {class: TweenTransformScale, ns: UnityExtensions.Tween, asm: Assembly-CSharp}
+      data:
+        enabled: 1
+        _minNormalizedTime: 0
+        _maxNormalizedTime: 1
+        _holdBeforeStart: 1
+        _holdAfterEnd: 1
+        _interpolator:
+          type: 0
+          strength: 0
+          customCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        _foldout: 1
+        _comment: 
+        runtimeFrom: 0
+        from: {x: 0, y: 0, z: 1}
+        to: {x: 1, y: 1, z: 1}
+        relative: 0
+        target: {fileID: 181939080}
+        toggle:
+          x: 0
+          y: 1
+          z: 0
 --- !u!1 &193268873
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,6 +8810,8 @@ GameObject:
   - component: {fileID: 569749284}
   - component: {fileID: 569749283}
   - component: {fileID: 569749285}
+  - component: {fileID: 569749287}
+  - component: {fileID: 569749286}
   m_Layer: 5
   m_Name: Image Left
   m_TagString: Untagged
@@ -8804,8 +8890,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 569749283}
-  show: {fileID: 0}
+  show: {fileID: 569749286}
   endShow: {fileID: 0}
+--- !u!114 &569749286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569749281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1304d750adf203b478af0c021cd6c17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localTweenShow: {fileID: 569749287}
+  _onShowUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onHideUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  RegisterOnBack: 0
+  indexLayer: 0
+--- !u!114 &569749287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569749281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdc95d9dfe9cf54398eecb6868b0335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateMode: 0
+  _id: 
+  _foldoutControl: 1
+  _foldoutEvents: 0
+  _duration: 0.25
+  timeMode: 1
+  wrapMode: 0
+  arrivedAction: 3
+  sampleOnAwake: 0
+  runOnEnable: 0
+  _onForwardArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _onBackArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _animations:
+  - rid: 3126250731684233224
+  references:
+    version: 2
+    RefIds:
+    - rid: 3126250731684233224
+      type: {class: TweenTransformScale, ns: UnityExtensions.Tween, asm: Assembly-CSharp}
+      data:
+        enabled: 1
+        _minNormalizedTime: 0
+        _maxNormalizedTime: 1
+        _holdBeforeStart: 1
+        _holdAfterEnd: 1
+        _interpolator:
+          type: 0
+          strength: 0
+          customCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        _foldout: 1
+        _comment: 
+        runtimeFrom: 0
+        from: {x: 1, y: 0, z: 1}
+        to: {x: 1, y: 1, z: 1}
+        relative: 0
+        target: {fileID: 569749282}
+        toggle:
+          x: 0
+          y: 1
+          z: 0
 --- !u!1 &570562810
 GameObject:
   m_ObjectHideFlags: 0
@@ -21984,7 +22152,7 @@ MonoBehaviour:
   textLevel: {fileID: 981245675}
   listTube: []
   card: {fileID: 11400000, guid: 2ad2fdb6ad3c27148baab3281b2b6f2d, type: 2}
-  idLevel: 18
+  idLevel: 0
   timer: {fileID: 1307233303}
   imageLight: {fileID: 689074248}
   pnShow: {fileID: 1771514501}

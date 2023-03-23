@@ -23,7 +23,6 @@ public class TubeManagement : MonoBehaviour
     public ManagementGame game;
 
 
-    #region buttonChoose
 
     
     public void ShowLeft()
@@ -104,18 +103,11 @@ public class TubeManagement : MonoBehaviour
         closeChoose.normalizedTime = 0;
     }
 
-
-    #endregion
-
-    #region ButtonChange
-
-
     public void Change()
     {
         btnChange.SetActive(false);
         isChange = true;
     }
-    #endregion
     public int[] GetAllAncol()
     {
         int[] Color = new int[listImage.Count];
@@ -138,7 +130,7 @@ public class TubeManagement : MonoBehaviour
         }
         return null;
     }
-    public List<ColorImage> GetAllAncolSameColor()
+    public List<ColorImage> GetAllAncolSameColor()                       // lay ra list mau do di
     {
         List<ColorImage> result = new List<ColorImage>();
         int i = listImage.Count - 1;
@@ -166,7 +158,7 @@ public class TubeManagement : MonoBehaviour
         
     }
 
-    public List<ColorImage> GetAllAncolNoColor()
+    public List<ColorImage> GetAllAncolNoColor()                   //Kiem tra so vi tri Image nhan mau
     {
         List<ColorImage> nocolor = new List<ColorImage>();
         for (int i = 0; i < listImage.Count; i++)
@@ -178,7 +170,7 @@ public class TubeManagement : MonoBehaviour
         }
         return nocolor;
     }
-    public List<ColorImage> ColoringCondition()
+    public List<ColorImage> ColoringCondition()                      //Kiem tra Dieu kien do mau
     {
         List<ColorImage> listCheck = new List<ColorImage>();
         int i = listImage.Count - 1;
@@ -193,7 +185,7 @@ public class TubeManagement : MonoBehaviour
         return listCheck;
     }
 
-    public void StartChange(List<ColorImage> listImage)
+    public void StartChange(List<ColorImage> listImage)                       //phuong thuc nhan mau
     {
         StartCoroutine(ReceiveAllAncol(listImage));
     }
@@ -218,7 +210,7 @@ public class TubeManagement : MonoBehaviour
             }
         }
     }
-    public void SetColorTube(TubeData card)
+    public void SetColorTube(TubeData card)                           //Nhan mau tu Card data vao tube
     {
         this.card = card;
 
@@ -230,7 +222,7 @@ public class TubeManagement : MonoBehaviour
         }
 
     }
-    public void SetColorByData(int[] color)
+    public void SetColorByData(int[] color)                     
     {
         for (int i = 0; i < color.Length; i++)
         {          
@@ -386,7 +378,7 @@ public class TubeManagement : MonoBehaviour
         angleValue = 0f;
         transform.eulerAngles = new Vector3(0, 0, angleValue);
     }*/
-    public int[] CheckColor()
+    public int[] CheckColor()                               // kiem tra mau cua tube
     {
         int[] data = new int[listImage.Count];
         for (int i = 0; i < listImage.Count; i++)

@@ -46,14 +46,16 @@ public class ColorImage : MonoBehaviour
 
     }*/
     public const int NO_COLOR = 0;
-    public static Color GetColorByID_Int(int colorID)
+
+    // Set value<int> return color Image
+    public static Color GetColorByID_Int(int colorID) 
     {
         switch (colorID)
         {
             case 1: return Color.green;
             case 2: return Color.blue;
             case 3: return Color.yellow;
-            case 4: return Color.gray;
+            case 4: return Color.gray; 
             case 5: return Color.cyan;
             case 6: return Color.magenta;
             case 7: return Color.black;
@@ -62,6 +64,7 @@ public class ColorImage : MonoBehaviour
         }
     }
 
+    // phuong thuc truyen mau
     public void SetColor(int color)
     {      
         img.color = GetColorByID_Int(color);
@@ -80,11 +83,14 @@ public class ColorImage : MonoBehaviour
 
 
     }
+    // Image dong nuoc do xuong
     public void SetColorFlow(int color)
     {
         img.color = GetColorByID_Int(color);
-        img.gameObject.SetActive(true);
+        show.show();
     }
+
+    // Kiem tra va Off cac anh khong mau
     public void RemoveColor()
     {
         hasColor = false;

@@ -23,7 +23,7 @@ public class ManagementGame : MonoBehaviour
     {
         Tubes = giveData.listTube;
     }
-    public void ResetDataAllTube()
+    public void ResetDataAllTube() 
     {
 
         for (int i = 0; i < Tubes.Count; i++)
@@ -41,7 +41,7 @@ public class ManagementGame : MonoBehaviour
         count = 0;
     }
 
-    public void BackOneAction()
+    public void BackOneAction() // Undo Action
     {
         var newData = ReturnDataAll(DataAll[count - 1]);
         for (int i = 0; i < Tubes.Count; i++)
@@ -66,7 +66,7 @@ public class ManagementGame : MonoBehaviour
         }
         return saveData;
     }
-    public void CheckPositionTube()
+    public void CheckPositionTube()  //Kiem tra va lay ra vi tri ban dau cua tube
     {
         Vector3 originalPosition;
         for (int i = 0; i < Tubes.Count; i++)
@@ -87,7 +87,7 @@ public class ManagementGame : MonoBehaviour
         }
     }
 
-    public void MoveTubeGive()
+    public void MoveTubeGive()          // di chuyen tubeGive den vi tri tubeReceive
     {
         Vector3 originalPosition = tubeGive.transform.position;
         if (tubeGive.transform.position.x > tubeReceive.transform.position.x)
@@ -101,7 +101,7 @@ public class ManagementGame : MonoBehaviour
 
     }
 
-    public Vector3 ReturnPosition()
+    public Vector3 ReturnPosition() // tra ong tube ve vi tri ban dau
     {
         Vector3 position = new Vector3(0, 0, 0);
         for (int i = 0; i < Tubes.Count; i++)
@@ -116,7 +116,7 @@ public class ManagementGame : MonoBehaviour
     }
 
 
-    public void ChangeAncol()
+    public void ChangeAncol()                                   // phuong thuc do mau
     {
         var newArrGive = tubeGive.GetAllAncolSameColor();
         var newArrReceive = tubeReceive.GetAllAncolNoColor();
@@ -141,6 +141,7 @@ public class ManagementGame : MonoBehaviour
                 OnSelectUnChoose();
                 tubeGive.EndChoose();
                 Give.Remove(tubeGive);
+                DataAll.Remove(newData);
 
             }
         }
@@ -149,6 +150,7 @@ public class ManagementGame : MonoBehaviour
             tubeGive.EndChoose();
             Give.Remove(tubeGive);
             OnSelectUnChoose();
+            DataAll.Remove(newData);
         }
         else
         {
@@ -162,7 +164,7 @@ public class ManagementGame : MonoBehaviour
         }
 
     }
-    public int CheckLengthImageFlow(TubeManagement tube)
+    public int CheckLengthImageFlow(TubeManagement tube)                  //kiem tra Image dong nuoc do xuong
     {
         int count = 0;
         for (int i = 0; i < tube.listImage.Count; i++)
@@ -194,15 +196,14 @@ public class ManagementGame : MonoBehaviour
     {
         var m = CheckLengthImageFlow(tubeReceive);
         yield return new WaitForSeconds(0.4f);
-        image.gameObject.SetActive(true);
-        image.SetSize(14, 580 - 120 * m);
+        image.SetSize(14, 590 - 110 * m);
         image.SetColorFlow(check);
         StartCoroutine(AutoOff(image));
     }
 
     IEnumerator AutoOff(ColorImage image)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         image.gameObject.SetActive(false);
     }
     public void EffectReceive(TubeManagement tube)
@@ -229,7 +230,7 @@ public class ManagementGame : MonoBehaviour
             }
         }
     }
-    public void CheckEffect()
+    public void CheckEffect()            // kiem tra vi tri tubeGive va tubeReceive de show animation
     {
         var a = tubeGive.transform.position.x;
         var b = tubeReceive.transform.position.x;
@@ -253,7 +254,7 @@ public class ManagementGame : MonoBehaviour
         }
 
     }
-    public void OnSelectTubeGive()
+    public void OnSelectTubeGive()             // Button choose
     {
 
         List<TubeManagement> TubeGive = new List<TubeManagement>();
@@ -281,7 +282,7 @@ public class ManagementGame : MonoBehaviour
 
     }
 
-    public void OnSelectUnChoose()
+    public void OnSelectUnChoose()                // Bt UnChoose
     {
 
         for (int i = 0; i < Tubes.Count; i++)
@@ -290,7 +291,7 @@ public class ManagementGame : MonoBehaviour
         }
     }
 
-    public void OnSelectChange()
+    public void OnSelectChange()           // Bt Change
     {
         for (int i = 0; i < Tubes.Count; i++)
         {
@@ -312,7 +313,7 @@ public class ManagementGame : MonoBehaviour
     {
         PlayerPrefs.SetInt("idLevel", giveData.idLevel);
     }
-    IEnumerator CheckOneTube()
+    IEnumerator CheckOneTube()                     // Check WinTube
     {
         yield return new WaitForSeconds(1.2f);
         for (int i = 0; i < Tubes.Count; i++)
@@ -329,7 +330,7 @@ public class ManagementGame : MonoBehaviour
         }
     }
 
-    IEnumerator CheckFullTube()
+    IEnumerator CheckFullTube()               // Check WinLevel
     {
         yield return new WaitForSeconds(2f);
 
