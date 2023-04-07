@@ -10,6 +10,7 @@ using UnityExtensions.Tween;
 public class TubeManagement : MonoBehaviour
 {
     public List<ColorImage> listImage;
+    public List<GameObject> imageHidden;
     public TubeData card;
     bool isChoose = false;
     bool isChange = false;
@@ -24,7 +25,16 @@ public class TubeManagement : MonoBehaviour
 
 
 
-    
+    public void CheckImageHidden()
+    {    
+        for (int i = listImage.Count - 1; i > 0; i--)
+        {
+            if(listImage[i].IsHasColor() == false)
+            {
+                imageHidden[i-1].SetActive(false);
+            }
+        }
+    }
     public void ShowLeft()
     {
         showChangeLeft.show();

@@ -9,25 +9,47 @@ using UnityEngine.SceneManagement;
 public class ButtonEven : MonoBehaviour
 {
     public GameObject imaeCircle1, imaeCircle2, imaeCircle3;
-    public GameObject imaeCircle1ST, imaeCircle2ST, imaeCircle3ST;
-    public UIElement pnStart, pnVictory, pnDefeated, pnPause, pnLevel, pnSetting, pnMessage;
+    public UIElement pnStart, pnVictory, pnDefeated, pnPause, pnLevel, pnSetting,pnSettingPause, pnMessage;
     public Text textLevel;
     public LoadLevel level;
     public AllLevelData card;
     public ManagementGame game;
-    
-
+    public GameObject sound;
+    public GameObject soundMute;
+    bool isMute = false;
+    public GameObject soundPause;
+    public GameObject soundMutePause;
+    public GameObject soundEffect;
+    bool isMutePause = false;
 
     public void RotateImage()
     {
         imaeCircle1.transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime);
         imaeCircle2.transform.Rotate(new Vector3(0, 0, -30) * Time.deltaTime);
         imaeCircle3.transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime);
-        imaeCircle1ST.transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime);
-        imaeCircle2ST.transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime);
-        imaeCircle3ST.transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime);
     }
 
+    public void ButtonMute()
+    {
+        if(isMute == false)
+        {
+            isMute = true;
+            sound.SetActive(false);
+            soundPause.SetActive(false);
+            soundMute.SetActive(true);
+            soundMutePause.SetActive(true);
+            soundEffect.SetActive(false);
+        }
+        else
+        {
+            isMute = false;
+            sound.SetActive(true);
+            soundMute.SetActive(false);
+            soundPause.SetActive(true);
+            soundMutePause.SetActive(false);
+            soundEffect.SetActive(true);
+        }
+    }
 
     public void ButtonStart()
     {
@@ -39,10 +61,17 @@ public class ButtonEven : MonoBehaviour
     public void ButtonPause()
     {
         pnPause.show();
-        textLevel.text = level.textLevel.text;
+    /*    textLevel.text = level.textLevel.text;*/
         pnLevel.close();
     }
-
+    public void BttuonSettingPause()
+    {
+        pnSettingPause.show();
+    }
+    public void CloseSettingPause()
+    {
+        pnSettingPause.close();
+    }
     public void ButtonClosePause()
     {
         pnPause.close();
@@ -83,6 +112,7 @@ public class ButtonEven : MonoBehaviour
     {
         pnSetting.close();
     }
+    
     public void BtnOk()
     {
         PlayerPrefs.DeleteKey("idLevel");

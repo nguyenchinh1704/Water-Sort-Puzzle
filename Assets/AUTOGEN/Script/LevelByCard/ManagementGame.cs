@@ -14,6 +14,9 @@ public class ManagementGame : MonoBehaviour
     public Text textLevel;
     public int count = 0;
     int check;
+    public AudioSource soundRecive;
+    public AudioSource soundVictory;
+
 
 
     List<int[,]> DataAll = new List<int[,]>();
@@ -37,7 +40,6 @@ public class ManagementGame : MonoBehaviour
         DataAll.Clear();
         Give.Clear();
         dataPosition.Clear();
-
         count = 0;
     }
 
@@ -116,6 +118,21 @@ public class ManagementGame : MonoBehaviour
     }
 
 
+    IEnumerator CheckTubeHiddenChange()
+    {
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < Tubes.Count; i++)
+        {
+            Tubes[i].CheckImageHidden();
+        }
+    }
+
+    IEnumerator EffectSound()
+    {
+        yield return new WaitForSeconds(1f);
+        soundRecive.Stop();
+    }
+
     public void ChangeAncol()                                   // phuong thuc do mau
     {
         var newArrGive = tubeGive.GetAllAncolSameColor();
@@ -131,6 +148,9 @@ public class ManagementGame : MonoBehaviour
             {
                 tubeReceive.StartChange(newArrGive);
                 tubeGive.EndChoose();
+                StartCoroutine(CheckTubeHiddenChange());
+                soundRecive.Play();
+                StartCoroutine(EffectSound());
                 MoveTubeGive();
                 CheckEffect();
                 StartCoroutine(BackPosition(tubeGive));
@@ -156,10 +176,12 @@ public class ManagementGame : MonoBehaviour
         {
             tubeReceive.StartChange(newArrGive);
             tubeGive.EndChoose();
+            StartCoroutine(CheckTubeHiddenChange());
+            soundRecive.Play();
+            StartCoroutine(EffectSound());
             MoveTubeGive();
             CheckEffect();
             StartCoroutine(BackPosition(tubeGive));
-
             count++;
         }
 
@@ -300,17 +322,16 @@ public class ManagementGame : MonoBehaviour
             {
                 tubeReceive = Tubes[i];
                 ChangeAncol();
-                OnSelectUnChoose();
+                OnSelectUnChoose();               
                 StartCoroutine(CheckOneTube());
                 StartCoroutine(CheckFullTube());
                 break;
             }
-
         }
     }
 
     public void SaveLevel()
-    {
+    {       
         PlayerPrefs.SetInt("idLevel", giveData.idLevel);
     }
     IEnumerator CheckOneTube()                     // Check WinTube
@@ -345,6 +366,7 @@ public class ManagementGame : MonoBehaviour
                 if (tubeFull.Count == Tubes.Count)
                 {
                     pnVictory.show();
+                    soundVictory.Play();
                     isShow = true;
                     giveData.StopAllCoroutines();
                     textLevel.text = giveData.textLevel.text;

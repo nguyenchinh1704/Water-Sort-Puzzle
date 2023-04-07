@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,12 +30,11 @@ public class GenLevel : MonoBehaviour
             TubeManagement1 newtubeClone = tubeClone.GetComponent<TubeManagement1>();
             listTube.Add(newtubeClone);
             listTube[i].SetColorTube(ActiveLevel.listTubeData[i]);
-
         }
     }
 
 
-    
+
 
     private Level GetDummyLevel()
     {
@@ -58,95 +55,18 @@ public class GenLevel : MonoBehaviour
 
         }
 
-
         int[,] arrayTube = new int[maxColor, tubeNum];
         var round1 = (tubeNum - 2) / colorNum;
         for (int round = 0; round < round1; round++)
         {
-            for (int idColor = 1; idColor <= Color.Length; idColor++)
-            {
-                for (int m = 0; m < (maxColor); m++)
-                {
-                    var pickTube = UnityEngine.Random.Range(0, tubeNum -2);
-
-                    int count = 0, count1 = 0;
-                    for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
-                    {
-                        if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
-                        {
-                            arrayTube[j, pickTube] = idColor;
-                            count++;
-                            break;
-                        }
-                    }
-                    if (count < 1)
-                    {
-                        for (int i = 0; i < tubeNum -2; i++)
-                        {
-                            for (int j = 0; j < maxColor; j++)
-                            {
-                                if (arrayTube[j, i] == ColorImage.NO_COLOR)
-                                {
-                                    arrayTube[j, i] = idColor;
-                                    count1++;
-                                    break;
-                                }
-
-                            }
-                            if (count1 > 0)
-                            {
-                                break;
-                            }
-
-                        }
-                    }
-                }
-            }
+            DataTransmission(tubeNum, colorNum, Color, maxColor, arrayTube);
         }
 
-        
-        var round2 = (tubeNum - 2)%colorNum;
-        if(round2 >0)
+
+        var round2 = (tubeNum - 2) % colorNum;
+        if (round2 > 0)
         {
-            for (int idColor = 1; idColor <= round2; idColor++)
-            {
-                for (int m = 0; m < (maxColor); m++)
-                {
-                    var pickTube = UnityEngine.Random.Range(0, tubeNum-2);
-
-                    int count = 0, count1 = 0;
-                    for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
-                    {
-                        if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
-                        {
-                            arrayTube[j, pickTube] = idColor;
-                            count++;
-                            break;
-                        }
-                    }
-                    if (count < 1)
-                    {
-                        for (int i = 0; i < tubeNum-2; i++)
-                        {
-                            for (int j = 0; j < maxColor; j++)
-                            {
-                                if (arrayTube[j, i] == ColorImage.NO_COLOR)
-                                {
-                                    arrayTube[j, i] = idColor;
-                                    count1++;
-                                    break;
-                                }
-
-                            }
-                            if (count1 > 0)
-                            {
-                                break;
-                            }
-
-                        }
-                    }
-                }
-            }
+            DataTransmission(tubeNum, colorNum, Color, maxColor, arrayTube);
         }
 
         for (int i = 0; i < tubeNum; i++)
@@ -163,6 +83,49 @@ public class GenLevel : MonoBehaviour
         level.listTubeData = newData;
 
         return level;
+    }
+
+    public void DataTransmission(int numTube, int numColor, int[] Color, int maxColor, int[,] arrayTube)
+    {
+        for (int idColor = 1; idColor <= Color.Length; idColor++)
+        {
+            for (int m = 0; m < (maxColor); m++)
+            {
+                var pickTube = UnityEngine.Random.Range(0, tubeNum - 2);
+
+                int count = 0, count1 = 0;
+                for (int j = 0; j < maxColor; j++) ///check vi tri trong trong tube tu duoi len
+                {
+                    if (arrayTube[j, pickTube] == ColorImage.NO_COLOR)
+                    {
+                        arrayTube[j, pickTube] = idColor;
+                        count++;
+                        break;
+                    }
+                }
+                if (count < 1)
+                {
+                    for (int i = 0; i < tubeNum - 2; i++)
+                    {
+                        for (int j = 0; j < maxColor; j++)
+                        {
+                            if (arrayTube[j, i] == ColorImage.NO_COLOR)
+                            {
+                                arrayTube[j, i] = idColor;
+                                count1++;
+                                break;
+                            }
+
+                        }
+                        if (count1 > 0)
+                        {
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 
 
@@ -209,7 +172,7 @@ public class GenLevel : MonoBehaviour
         var b = colorNumber.text;
         tubeNum = int.Parse(a);
         colorNum = int.Parse(b);
-        textLevel.text = "LEVEL " + tubeNum +"."+ colorNum;
+        textLevel.text = "LEVEL " + tubeNum + "." + colorNum;
     }
 
     // Update is called once per frame

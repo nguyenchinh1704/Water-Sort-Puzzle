@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +9,10 @@ using UnityExtensions.Tween;
 
 public class LoadLevel : MonoBehaviour
 {
+    public GroupTheme theme;
     public Level ActiveLevel;
-    public GameObject tube, tubeContainer;
+    public Image backGroundLevel;
+    public GameObject tube,tubeHidden,tubeContainer;
     public Text textLevel;
     public List<TubeManagement> listTube = new List<TubeManagement>();
     public AllLevelData card;
@@ -24,14 +26,19 @@ public class LoadLevel : MonoBehaviour
     public ManagementGame game;
     public int count = 0;
     public GameObject pnWarning;
+    int i = 5;
+    public AudioSource soundDefeat;
+
+
     IEnumerator UpdateTimer(int time) // Coroutine clockCutdown
     {
+        int totalTime = time;
         while (time >= 0)
         {
             float minutes = Mathf.FloorToInt(time / 60);
             float sec = Mathf.FloorToInt(time % 60);
             timer.text = string.Format("{0:00}:{1:00}", minutes, sec);
-            imageLight.fillAmount = Mathf.InverseLerp(0, time, time);
+            imageLight.fillAmount = Mathf.InverseLerp(0, totalTime, time);
             time--;
             count++;
             yield return new WaitForSeconds(1f);
@@ -81,6 +88,7 @@ public class LoadLevel : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         pnShow.show();
+        soundDefeat.Play();
     }
 
     /*public void ButtonRestart()
@@ -108,15 +116,23 @@ public class LoadLevel : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        if((idLevel -1) % i == 0 && (idLevel -1) >0)
+        {
+            GenTubeHidden(newLevel);
+        }else
+        {
+            GenTubes(newLevel);
+        }
         /*tubeContainer.transform.DetachChildren();*/
-        GenTubes(newLevel);
         /*StartCoroutine(UpdateTimer(newLevel.totalTime));*/
         ActiveLevel = newLevel;
         timer.color = Color.yellow;
         game.Tubes = listTube;
         game.count = 0;
         count = 0;
+        Debug.Log(idLevel);
     }
+
 
     public void GenTubes(Level level) // Gen level by idLevel
     {
@@ -129,6 +145,7 @@ public class LoadLevel : MonoBehaviour
             TubeManagement newtubeClone = tubeClone.GetComponent<TubeManagement>();
             listTube.Add(newtubeClone);
             listTube[i].SetColorTube(level.listTubeData[i]);
+            listTube[i].CheckImageHidden();
 
         }
         textLevel.text = "LEVEL " + (PlayerPrefs.GetInt("idLevel") + 1);
@@ -137,17 +154,49 @@ public class LoadLevel : MonoBehaviour
         idLevel++;
 
     }
+    public void GenTubeHidden(Level level) // Gen level by idLevel // tubeHidden
+    {
+        listTube.Clear();
+        idLevel = PlayerPrefs.GetInt("idLevel");
+        for (int i = 0; i < level.listTubeData.Count; i++)
+        {
+            GameObject tubeClone = Instantiate(tubeHidden, tubeContainer.transform);
+            tubeClone.name = "Tube" + i;
+            TubeManagement newtubeClone = tubeClone.GetComponent<TubeManagement>();
+            listTube.Add(newtubeClone);
+            listTube[i].SetColorTube(level.listTubeData[i]);
+            listTube[i].CheckImageHidden();
+        }
+        textLevel.text = "LEVEL " + (PlayerPrefs.GetInt("idLevel") + 1);
+        StartCoroutine(UpdateTimer(level.totalTime));
+        ActiveLevel = level;
+        idLevel++;
+
+    }
+
     public void ButtonNextLevel()
     {
         if(idLevel<card.listLevel.Count) // Next level in DataLevel
         {
-            StopAllCoroutines();
-            foreach (Transform child in tubeContainer.transform)
+            count = 0;
+            if (idLevel > 0 && idLevel %i == 0)
             {
-                Destroy(child.gameObject);
+                StopAllCoroutines();
+                foreach (Transform child in tubeContainer.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                GenTubeHidden(card.listLevel[idLevel]);
+            } else
+            {
+                StopAllCoroutines();
+                foreach (Transform child in tubeContainer.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                GenTubes(card.listLevel[idLevel]);
+                timer.color = Color.yellow;
             }
-            GenTubes(card.listLevel[idLevel]);
-            timer.color = Color.yellow;
 
         }
         else   //  Tao level moiw va luu lai vao SO 
@@ -161,15 +210,21 @@ public class LoadLevel : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            /*tubeContainer.transform.DetachChildren();*/
-            GenTubes(newLevel);
-            /*StartCoroutine(UpdateTimer(newLevel.totalTime));*/
             ActiveLevel = newLevel;
+            card.listLevel.Add(newLevel);
+            timer.color = Color.yellow;
             game.Tubes = listTube;
             game.count = 0;
             count = 0;
-            timer.color = Color.yellow;
-            card.listLevel.Add(newLevel);
+            if (idLevel > 0 && idLevel % i == 0)
+            {              
+                GenTubeHidden(newLevel);                
+            }
+            else
+            {               
+                GenTubes(newLevel);               
+            }
+            
         }
     }
     private void OnEnable()
@@ -190,7 +245,16 @@ public class LoadLevel : MonoBehaviour
     void Start()
     {
         count = PlayerPrefs.GetInt("idLevel");
-        GenTubes(card.listLevel[count]);
+        if (count> 0 && count % i == 0)
+        {
+            GenTubeHidden(card.listLevel[count]);
+        }
+        else
+        {
+            GenTubes(card.listLevel[count]);
+        }
+
+        backGroundLevel.GetComponent<Image>().sprite = theme.listImageTheme[PlayerPrefs.GetInt("idTheme")].Imgtheme;
     }
 
     public int[,] SaveOldData(Level level) // Tao array data tu level hien tai
@@ -211,7 +275,7 @@ public class LoadLevel : MonoBehaviour
     public Level CreatNewData(Level level, int[,] data) // tao data Level moi tu data cua level hien tai
     {
         Level newLevel = new Level();
-        data = SaveOldData(level);
+        //data = SaveOldData(ActiveLevel);   //thừa
         List<TubeData> newListTubeData = new List<TubeData>();
         List<int> listData = new List<int>();
         int column = level.listTubeData.Count;
@@ -224,6 +288,24 @@ public class LoadLevel : MonoBehaviour
             }
         }
         var newData = SetValue(listData, level);
+        
+        //for (int i = 0; i < column; i++)
+        //{
+        //    TubeData dataTube = new TubeData();
+        //    dataTube.Color = new int[row];
+        //    for (int j = 0; j < row; j++)
+        //    {
+        //        dataTube.Color[j] = newData[j, i];
+        //    }
+        //    newListTubeData.Add(dataTube);
+        //}
+
+        newLevel.listTubeData = BuildAllTubeFromData(column,row,newData,new List<TubeData>());
+        return newLevel;
+    }
+
+    private List<TubeData> BuildAllTubeFromData(int column,int row,int[,] newData,List<TubeData> newListTubeData)
+    {
         for (int i = 0; i < column; i++)
         {
             TubeData dataTube = new TubeData();
@@ -234,9 +316,7 @@ public class LoadLevel : MonoBehaviour
             }
             newListTubeData.Add(dataTube);
         }
-
-        newLevel.listTubeData = newListTubeData;
-        return newLevel;
+        return newListTubeData;
     }
 
     public int[,] SetValue(List<int> data, Level level)       //Phuong thuc tao data cua level moi
